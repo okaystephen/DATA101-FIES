@@ -29,6 +29,27 @@ def get_regions():
     
     return Response(regions_dict, mimetype="application/json")
 
+@app.route('/data')
+def get_data():
+    df = pd.read_csv(data_url)
+    df = df.iloc[:, [0,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,33,34,35,47,50,51,54,55,56]]          # get only needed columns
+
+    # clean column names
+    df.rename(columns= {'Crop Farming and Gardening expenses': 'Crop Farming and Gardening Expenditure', 
+                        'Housing and water Expenditure': 'Housing and Water Expenditure',
+                        'Restaurant and hotels Expenditure': 'Restaurant and Hotel Expenditure',
+                        'Total Fish and  marine products Expenditure': 'Total Fish and Marine Products Expenditure',
+                        'Members with age less than 5 year old': 'Members with Age less than 5 years old',
+                        'Members with age 5 - 17 years old': 'Members with Age 5-17 years old',
+                        'Total Number of Family members': 'Total Number of Family Members'}, inplace=True)
+
+    data = sorted(df.columns.to_list())
+
+    # store in dictionary format
+    data_dict = pd.DataFrame(list(zip(data, data)), columns=[
+                                'value', 'label']).to_json(orient="records")
+
+    return Response(data_dict, mimetype="application/json")
 
 # @app.route('/countries')
 # def get_countries():

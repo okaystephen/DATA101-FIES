@@ -1,9 +1,16 @@
 $(document).ready(function(){
   var region_select = $('ul li #region_select')
+  var data_select = $('ul li #data_select')
 
   d3.json('/regions').then(function(data){
     data.forEach(function(elem){
       region_select.append('<option value="'+ elem.value + '">'+ elem.label + '</option>');
+    });
+  });
+
+  d3.json('/data').then(function(data){
+    data.forEach(function(elem){
+      data_select.append('<option value="'+ elem.value + '">'+ elem.label + '</option>');
     });
   });
 

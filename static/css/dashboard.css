@@ -40,12 +40,20 @@ html, body {
 
 select {
     border:0px;
+    display: block;
     outline:none;
     cursor: pointer; 
     height: 30px; 
     width: 290px;
     margin-bottom: 15px;
     margin-top: -15px;
+    background-color: white;
+    font-family: 'Poppins';
+}
+
+option {
+    background-color: white;
+    font-family: 'Poppins';
 }
 
 hr {
