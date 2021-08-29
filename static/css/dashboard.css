@@ -42,20 +42,10 @@ select {
     border:0px;
     outline:none;
     cursor: pointer; 
-    height: 28px; 
+    height: 30px; 
     width: 290px;
     margin-bottom: 15px;
-}
-
-.selectWrapper{
-    border-radius:30px;
-    display:inline-block;
-    overflow:hidden;
-    background:#cccccc;
-    border:1px solid #cccccc;
-    height: 28px; 
-    width: 290px;
-    margin-top: -5px;
+    margin-top: -15px;
 }
 
 hr {
