@@ -49,6 +49,10 @@ def index():
 def about():
     return app.send_static_file('about.html')
 
+@app.route('/dashboard')
+def dashboard():
+    return app.send_static_file('dashboard.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
