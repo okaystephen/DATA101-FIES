@@ -15,3 +15,6 @@
   - Install Flask by running `py -m pip install Flask`
   - Install pandas by running `py -m pip install pandas`
 - To start the web application, enter `python app.py`
+
+#### Note:
+- Add your mapbox access token in map.js and remove when pushing in github (or store in .env file)
