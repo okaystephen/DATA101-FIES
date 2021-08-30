@@ -38,6 +38,11 @@ html, body {
     font-size: 15px;
 }
 
+.map-container {
+    margin-left: 25%;
+    height: 100%;
+}
+
 select {
     border:0px;
     display: block;
