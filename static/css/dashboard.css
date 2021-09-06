@@ -5,12 +5,44 @@ html, body {
     font-family: 'Poppins';
 }
 
+.dashboard {
+    background-color: #FFFFFF;
+    color: #64BB6A;
+    /* font-size: 25px; */
+}
+
+.dashboard-map {
+    height: 100%;
+    overflow: auto;
+}
+
+a {
+    color: #64BB6A;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color:#38782C; 
+    text-decoration:none; 
+    cursor:pointer;  
+    transition: 0.3s;
+}
+
+.bg-white {
+    background-color: #FFFFFF;
+}
+
+select {
+    font-size: small!important;
+}
+
 .vertical-navbar{
     list-style-type: none;
     margin: 0;
     padding: 0;
     width: 25%;
-    background-color: #0D8A50;
+    background-color: #FDFED4;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -39,8 +71,8 @@ html, body {
 }
 
 .map-container {
-    margin-left: 25%;
-    height: 100%;
+    /* margin-left: 25%; */
+    position: fixed; top: 0; bottom: 0; width: 100%;
 }
 
 select {

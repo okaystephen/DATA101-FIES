@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Family Income & Expenditure Survey</title>
+  <title>Family Income & Expenditure Survey - Dashboard</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,35 +27,134 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
   <link rel="stylesheet" href="static/css/dashboard.css">
-  <script type="text/javascript" src="static/js/main.js"></script> 
+  <script type="text/javascript" src="static/js/main.js"></script>
 
 </head>
 
 <body>
-    <ul class="vertical-navbar">
-        <a href="/"><p>Family Income and Expenditure Survey</p></a>
+  <div class="container-fluid h-100">
+    <div class="row">
+      <!-- Dashboard -->
+      <div class="col-4 dashboard">
+        <div class="pt-4 pb-3 px-2 sticky-top bg-white">
+          <a href="/">
+            <p style="font-size: small;"><i class="fas fa-arrow-left"></i> Back to Home</p>
+          </a>
 
-        <li>
-            <p>Region</p>
-            <select id="region_select" name="region_select">
-                <option value="">Select a Region</option>
-            </select>
-        </li>
+          <h3><b>Family Income and Expenditure Survey</b></h3>
 
-        <li>
-            <p>Data</p>
-            <select id="data_select" name="data_select">
-                <option value="">Select a Data</option>
-            </select>
-        </li>
+          <p class="pt-2" style="font-weight: 500;">Region</p>
+          <select class="form-select" id="region_select" name="region_select">
+            <option value="">Select a Region</option>
+          </select>
 
-        <hr/>
+          <p class="pt-2" style="font-weight: 500;">Data</p>
+          <select class="form-select" id="data_select" name="data_select">
+            <option value="">Select a Data</option>
+          </select>
 
-    </ul>
-    
-  <div id='map' class='map-container'></div>
-  <script src="static/js/map.js"></script> 
+          <hr class='w-100' style="color: #64BB6A;" />
+
+        </div>
+
+
+
+        <div class="overflow-auto pb-4 px-2">
+          <h4><b>Monthly Household Income — National Capital Region</b></h4>
+          On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized
+          by the
+          charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are
+          bound to
+          ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as
+          saying
+          through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free
+          hour, when our
+          power of choice is untrammelled and when nothing prevents our being able to do what we like best, every
+          pleasure is to
+          be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the
+          obligations of
+          business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man
+          therefore
+          always holds in these matters to this principle of selection: he rejects pleasures to secure other greater
+          pleasures, or
+          else he endures pains to avoid worse pains.
+          On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized
+          by the
+          charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are
+          bound to
+          ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as
+          saying
+          through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free
+          hour, when our
+          power of choice is untrammelled and when nothing prevents our being able to do what we like best, every
+          pleasure is to
+          be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the
+          obligations of
+          business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man
+          therefore
+          always holds in these matters to this principle of selection: he rejects pleasures to secure other greater
+          pleasures, or
+          else he endures pains to avoid worse pains.
+          On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized
+          by the
+          charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are
+          bound to
+          ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as
+          saying
+          through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free
+          hour, when our
+          power of choice is untrammelled and when nothing prevents our being able to do what we like best, every
+          pleasure is to
+          be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the
+          obligations of
+          business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man
+          therefore
+          always holds in these matters to this principle of selection: he rejects pleasures to secure other greater
+          pleasures, or
+          else he endures pains to avoid worse pains.
+        </div>
+
+      </div>
+
+      <!-- Map -->
+      <div class="col-8 dashboard-map bg-white">
+        <div id='map' class='map-container'></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <ul class="vertical-navbar">
+    <a href="/">
+      <p>Family Income and Expenditure Survey</p>
+    </a>
+
+    <li>
+      <p>Region</p>
+      <select id="region_select" name="region_select">
+        <option value="">Select a Region</option>
+      </select>
+    </li>
+
+    <li>
+      <p>Data</p>
+      <select id="data_select" name="data_select">
+        <option value="">Select a Data</option>
+      </select>
+    </li>
+
+    <hr />
+
+  </ul> -->
+
+  <!-- <div id='map' class='map-container'></div> -->
+
+  <script src="static/js/map.js"></script>
 
 </body>

@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: 'Poppins';
-    background-image: url('../img/1.png');
+    background-image: url('../img/1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -28,6 +28,11 @@ html, body {
     left:50%;
     margin-top:-100px;
     margin-left:-250px;
+}
+
+.btn {
+    border-radius: 25px;
+    width: 25%
 }
 
 /* Animations */
