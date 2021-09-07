@@ -1,7 +1,7 @@
 from flask import Flask, Response, jsonify
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 data_url = 'data/Family Income and Expenditure.csv'
 
