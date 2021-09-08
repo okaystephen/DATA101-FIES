@@ -1,9 +1,12 @@
 from flask import Flask, Response, jsonify
+import os
 import pandas as pd
 
 app = Flask(__name__, static_url_path='/static')
 
 data_url = 'data/Family Income and Expenditure.csv'
+
+mapbox_token = os.environ.get('MAP', None)
 
 # DATA ENDPOINTS
 @app.route('/regions')
@@ -94,7 +97,7 @@ def about():
 
 @app.route('/dashboard')
 def dashboard():
-    return app.send_static_file('dashboard.html')
+    return app.send_static_file('dashboard.html', mapbox=mapbox_token)
 
 
 if __name__ == '__main__':
