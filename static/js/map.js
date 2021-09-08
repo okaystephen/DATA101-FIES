@@ -1,11 +1,5 @@
 mapboxgl.accessToken = '{{mapbox_token}}';
 
-d3.json('/token').then(function (data) {
-    data.forEach(function (elem) {
-        data_select.append('<option value="' + elem.value + '">' + elem.label + '</option>');
-    });
-});
-
 var map = new mapboxgl.Map({
     container: 'map',
     // style: 'mapbox://styles/iravillanueva/cksx86oy5c8s217rwkevw6ydl',
