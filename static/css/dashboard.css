@@ -16,6 +16,10 @@ html, body {
     overflow: auto;
 }
 
+.sidebar-content p {
+    font-size: small;
+}
+
 a {
     color: #64BB6A;
     text-decoration: none;

@@ -77,3 +77,27 @@ $(document).ready(function () {
 
 });
 
+function sidebarChangeContent(data, region) {
+  $('.sidebar-content').empty()
+  $('.sidebar-content').append('<h4><b>' + data + ' — ' + region + '</b></h4>')
+  $('.sidebar-content').append('<p>Add information</p>')
+}
+
+function regionChange() {
+  var data = $('#data_select').val()
+  var region = $('#region_select').val()
+
+  if (data == "" || region == "") { } else {
+    sidebarChangeContent(data, region)
+  }
+}
+
+function dataChange() {
+  var data = $('#data_select').val()
+  var region = $('#region_select').val()
+
+  if (data == "" || region == "") { } else {
+    sidebarChangeContent(data, region)
+  }
+}
+
