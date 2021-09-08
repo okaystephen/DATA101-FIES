@@ -97,7 +97,8 @@ def about():
 
 @app.route('/dashboard')
 def dashboard():
-    return app.send_static_file('dashboard.html')
+    # return app.send_static_file('dashboard.html')
+    return render_template('dashboard.html', mapbox_token=mapbox_token)
 
 @app.route('/token')
 def token():
