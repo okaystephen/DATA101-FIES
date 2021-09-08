@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Family Income & Expenditure Survey - Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Mapbox -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="static/css/dashboard.css">
+  <script type="text/javascript" src="static/js/main.js"></script>
+
+</head>
+
+<body>
+  <div class="container-fluid h-100">
+    <div class="row">
+      <!-- Dashboard -->
+      <div class="col-4 dashboard">
+        <!-- Sidebar Bottom -->
+        <div class="pt-4 pb-3 px-2 sticky-top bg-white">
+          <a href="/">
+            <p style="font-size: small;"><i class="fas fa-arrow-left"></i> Back to Home</p>
+          </a>
+
+          <h3><b>Family Income and Expenditure Survey</b></h3>
+
+          <p class="pt-2" style="font-weight: 500;">Region</p>
+          <select class="form-select" id="region_select" name="region_select" onchange="regionChange()">
+            <option value="">Select a Region</option>
+          </select>
+
+          <p class="pt-2" style="font-weight: 500;">Data</p>
+          <select class="form-select" id="data_select" name="data_select" onchange="dataChange()">
+            <option value="">Select a Data</option>
+          </select>
+
+          <hr class='w-100' style="color: #64BB6A;" />
+        </div>
+
+        <!-- Sidebar Bottom -->
+        <div class="overflow-auto sidebar-content pb-4 px-2">
+          <h4><b>Hello!</b></h4>
+          <p>Select a region and type of data in order to get started.</p>
+        </div>
+
+      </div>
+
+      <!-- Map -->
+      <div class="col-8 dashboard-map bg-white">
+        <div id='map' class='map-container'></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <ul class="vertical-navbar">
+    <a href="/">
+      <p>Family Income and Expenditure Survey</p>
+    </a>
+
+    <li>
+      <p>Region</p>
+      <select id="region_select" name="region_select">
+        <option value="">Select a Region</option>
+      </select>
+    </li>
+
+    <li>
+      <p>Data</p>
+      <select id="data_select" name="data_select">
+        <option value="">Select a Data</option>
+      </select>
+    </li>
+
+    <hr />
+
+  </ul> -->
+
+  <!-- <div id='map' class='map-container'></div> -->
+
+  <script src="static/js/map.js"></script>
+
+</body>
