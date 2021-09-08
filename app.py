@@ -2,7 +2,8 @@ from flask import Flask, Response, jsonify, render_template
 import pandas as pd
 import os
 
-app = Flask(__name__, static_url_path='/static')
+# app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__, template_folder='templates')
 
 data_url = 'data/Family Income and Expenditure.csv'
 
@@ -88,12 +89,15 @@ def get_data():
 # STATIC PAGES
 @app.route('/')
 def index():
-    return app.send_static_file('index.html')
+    # return app.send_static_file('index.html')
+    return render_template('index.html')
 
 
 @app.route('/about')
 def about():
-    return app.send_static_file('about.html')
+    # return app.send_static_file('about.html')
+    return render_template('about.html')
+
 
 @app.route('/dashboard')
 def dashboard():
