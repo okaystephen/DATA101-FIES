@@ -104,9 +104,5 @@ def dashboard():
     # return app.send_static_file('dashboard.html')
     return render_template('dashboard.html', mapbox_token=mapbox_token)
 
-@app.route('/token')
-def token():
-    return mapbox_token
-
 if __name__ == '__main__':
     app.run(debug=True)
