@@ -3,16 +3,38 @@ $(document).ready(function () {
   var data_select = $('#data_select')
 
   d3.json('/regions').then(function (data) {
+    console.log(data)
     data.forEach(function (elem) {
       region_select.append('<option value="' + elem.value + '">' + elem.label + '</option>');
     });
   });
 
   d3.json('/data').then(function (data) {
+    console.log(data)
     data.forEach(function (elem) {
       data_select.append('<option value="' + elem.value + '">' + elem.label + '</option>');
     });
   });
+
+  d3.json('/fies').then(function (data) {
+    console.log(data)
+  });
+
+  // d3.json("/fies", function (error, data) {
+
+  //   if (error) {
+  //     return console.warn(error);
+  //   }
+
+  //   d3.select("#test")
+  //     .selectAll("p")
+  //     .data(data)
+  //     .enter()
+  //     .append("p")
+  //     .text(function (d) {
+  //       return d.name + ", " + d.location;
+  //     });
+  // });
 
 
   // example of miss unisse during class for food consumption guide
@@ -108,30 +130,30 @@ function dataChange() {
   }
 }
 data = d3.csv("https://raw.githubusercontent.com/dlsudatasci/data-visualization/main/ched_sucfacultystudentratio_20162018.csv")
- .then(makeChart);
+  .then(makeChart);
 
 function makeChart(data) {
-    var students = data.map(function(d) {return d.students2017;});
-    var region = data.map(function(d) {return d.region;});
+  var students = data.map(function (d) { return d.students2017; });
+  var region = data.map(function (d) { return d.region; });
 
-    new Chart(document.getElementById("myCanvas"), {
-      type: 'bar',
-      data: {
-        labels: region,
-        datasets: [
-          {
-            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-            data: students
-          }
-        ]
-      },
-      options: {
-        legend: { display: false },
-        title: {
-          display: true,
-          text: 'Graph'
+  new Chart(document.getElementById("myCanvas"), {
+    type: 'bar',
+    data: {
+      labels: region,
+      datasets: [
+        {
+          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+          data: students
         }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Graph'
       }
+    }
   });
 }
 

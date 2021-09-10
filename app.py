@@ -1,5 +1,6 @@
 from flask import Flask, Response, jsonify, render_template
 import pandas as pd
+import json 
 import os
 
 # app = Flask(__name__, static_url_path='/static')
@@ -54,6 +55,17 @@ def get_data():
                                 'value', 'label']).to_json(orient="records")
 
     return Response(data_dict, mimetype="application/json")
+
+# Get average value (data type) per region
+@app.route('/fies')
+def get_fies():
+    df = pd.read_csv(data_url)
+    df = df.iloc[:, [0,1,2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,33,34,35,47,50,51,54,55,56]] 
+    df_groupby = df.groupby(by=["Region"]).mean().reset_index()
+    data_dict = df_groupby.to_dict(orient="records")
+    data_json = json.dumps(data_dict) 
+
+    return Response(data_json, mimetype="application/json")
 
 # @app.route('/countries')
 # def get_countries():
