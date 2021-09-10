@@ -28,6 +28,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
     integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -68,9 +70,11 @@
           <h4><b>Hello!</b></h4>
           <p>Select a region and type of data in order to get started.</p>
 
-          <div id = "chart">
+          <!-- <div id = "chart">
             <svg> </svg>
-          </div>    
+          </div>     -->
+
+          <canvas id="myChart" width="400" height="400"></canvas>
         </div>
 
       </div>

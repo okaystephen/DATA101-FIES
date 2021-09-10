@@ -107,46 +107,31 @@ function dataChange() {
     sidebarChangeContent(data, region)
   }
 }
+data = d3.csv("https://raw.githubusercontent.com/dlsudatasci/data-visualization/main/ched_sucfacultystudentratio_20162018.csv")
+ .then(makeChart);
 
-var passengers = [
-  {"year":2001,"passengers":19895475.0},
-  {"year":2002,"passengers":20057203.0},
-  {"year":2003,"passengers":20601050.0},
-  {"year":2004,"passengers":23269276.0},
-  {"year":2005,"passengers":24670595.0},
-  {"year":2006,"passengers":26682198.0},
-  {"year":2007,"passengers":34206573.0},
-  {"year":2008,"passengers":36162930.0},
-  {"year":2009,"passengers":41216090.0},
-  {"year":2010,"passengers":47989065.0},
-  {"year":2011,"passengers":87384302.0},
-  {"year":2012,"passengers":56704493.0},
-  {"year":2013,"passengers":56548930.0},
-  {"year":2014,"passengers":53462541.0},
-  {"year":2015,"passengers":56813462.0},
-  {"year":2016,"passengers":62115054.0}
-];
+function makeChart(data) {
+    var students = data.map(function(d) {return d.students2017;});
+    var region = data.map(function(d) {return d.region;});
 
-
-var svg = d3.select("#chart").append("svg")
-
-function drawGraph(passengers){
-  svg.selectAll("rect")
-  .data(passengers)
-  .join("rect")
-    .attr("x", 40)
-    .attr("y", (d,i) => i * 30 + 4.6)
-    .attr("width", (d, i) => d.passengers/300000)
-    .attr("height", 20)
-    .attr("fill", "DarkSeaGreen");
-
-  svg.selectAll("text")
-    .data(passengers)
-    .join("text")
-      .attr("x", 0)
-      .attr("y", (d,i) => i * 30 + 20)
-      .text((d, i) => d.year)
+    new Chart(document.getElementById("myCanvas"), {
+      type: 'bar',
+      data: {
+        labels: region,
+        datasets: [
+          {
+            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+            data: students
+          }
+        ]
+      },
+      options: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Graph'
+        }
+      }
+  });
 }
 
-
-drawGraph(passengers);
