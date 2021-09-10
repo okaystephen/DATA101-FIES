@@ -78,8 +78,15 @@ $(document).ready(function () {
 });
 
 function sidebarChangeContent(data, region) {
+  // Clear sidebar content
   $('.sidebar-content').empty()
+
+  // Display information about region
   $('.sidebar-content').append('<h4><b>' + data + ' — ' + region + '</b></h4>')
+  $('.sidebar-content').append('<p>Add information</p>')
+
+  // Display ranking among other regions
+  $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5></div>')
   $('.sidebar-content').append('<p>Add information</p>')
 }
 

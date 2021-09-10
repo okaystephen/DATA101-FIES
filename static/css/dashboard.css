@@ -76,7 +76,7 @@ select {
 
 .map-container {
     /* margin-left: 25%; */
-    position: fixed; top: 0; bottom: 0; width: 100%;
+    position: fixed; top: 0; bottom: 0; width: 66%;
 }
 
 select {
