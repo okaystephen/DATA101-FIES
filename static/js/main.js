@@ -16,10 +16,6 @@ $(document).ready(function () {
     });
   });
 
-  d3.json('/fies').then(function (data) {
-    console.log(data)
-  });
-
   // d3.json("/fies", function (error, data) {
 
   //   if (error) {
@@ -100,16 +96,25 @@ $(document).ready(function () {
 });
 
 function sidebarChangeContent(data, region) {
+  var data_var = data
+
   // Clear sidebar content
   $('.sidebar-content').empty()
 
-  // Display information about region
-  $('.sidebar-content').append('<h4><b>' + data + ' — ' + region + '</b></h4>')
-  $('.sidebar-content').append('<p>Add information</p>')
+  d3.json('/fies').then(function (loop) {
+    loop.forEach(function (elem) {
+      if (region == elem['Region']) {
+        // Display information about region
+        $('.sidebar-content').append('<h4><b>' + data + ' — ' + region + '</b></h4>')
+        $('.sidebar-content').append('<p>The ' + data + ' in ' + region + ' was ' + elem[data_var] + '.</p>')
 
-  // Display ranking among other regions
-  $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5></div>')
-  $('.sidebar-content').append("hello")
+        // Display ranking among other regions
+        $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5></div>')
+      }
+    });
+  });
+
+
 }
 
 function regionChange() {
