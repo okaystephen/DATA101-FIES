@@ -5,14 +5,14 @@ $(document).ready(function () {
   d3.json('/regions').then(function (data) {
     console.log(data)
     data.forEach(function (elem) {
-      region_select.append('<option value="' + elem.value + '">' + elem.label + '</option>');
+      region_select.append(`<option value="${elem.value}">${elem.label}</option>`);
     });
   });
 
   d3.json('/data').then(function (data) {
     console.log(data)
     data.forEach(function (elem) {
-      data_select.append('<option value="' + elem.value + '">' + elem.label + '</option>');
+      data_select.append(`<option value="${elem.value}">${elem.label}</option>`);
     });
   });
 
@@ -105,8 +105,8 @@ function sidebarChangeContent(data, region) {
     loop.forEach(function (elem) {
       if (region == elem['Region']) {
         // Display information about region
-        $('.sidebar-content').append('<h4><b>' + data + ' — ' + region + '</b></h4>')
-        $('.sidebar-content').append('<p>The ' + data + ' in ' + region + ' was ' + elem[data_var] + '.</p>')
+        $('.sidebar-content').append(`<h4><b>${data} — ${region}</b></h4>`)
+        $('.sidebar-content').append(`<p>The ${data} in ${region} was ${elem[data_var]}.</p>`)
 
         // Display ranking among other regions
         $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5></div>')
