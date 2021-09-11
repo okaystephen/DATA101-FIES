@@ -1,4 +1,4 @@
-mapboxgl.accessToken = "{{mapbox_token}}";
+// mapboxgl.accessToken = "{{mapbox_token}}";
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iravillanueva/cksx86oy5c8s217rwkevw6ydl',
