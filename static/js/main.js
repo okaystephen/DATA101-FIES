@@ -101,6 +101,8 @@ function sidebarChangeContent(data, region) {
   // Clear sidebar content
   $('.sidebar-content').empty()
 
+  $('.sidebar-content').hide()
+
   d3.json('/fies').then(function (loop) {
     loop.forEach(function (elem) {
       if (region == elem['Region']) {
@@ -120,17 +122,111 @@ function sidebarChangeContent(data, region) {
 
 function getRanking(data_var) {
   d3.json('/fies').then(function (loop) {
+    // <div id="bar"></div>
+    var region = []
+    var figure = []
+
+
     loop.forEach(function (elem) {
       var keys = Object.keys(elem);
       console.log(keys)
 
       keys.forEach(function (key) { //loop through keys array
         if (key == data_var) {
-          $('.sidebar-content').append(`<p>${elem['Region']} - ${elem[data_var]}</p>`)
+          // $('.sidebar-content').append(`<p>${elem['Region']} - ${elem[data_var]}</p>`)
+          region.push(elem['Region'])
+          figure.push(elem[data_var])
         }
       });
     });
+    console.log(region)
+    console.log(figure)
+    $('.sidebar-content').append(`<div id="bar"></div>`)
+
+    // Make bar chart
+    var w = 420;
+    var h = 600;
+    var padding_left = 70;
+    var padding = 45;
+
+    var bar = d3.select("#bar").append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+    var maxRatio = d3.max(figure);
+    // var regions = data.map(function (d) { return d.region; });
+
+    var xScale = d3.scaleLinear([0, maxRatio], [padding, w - padding_left]);
+    var yScale = d3.scaleBand()
+      .domain(region)
+      .rangeRound([padding, h - padding])
+      .padding(0.1);
+    var colorScale = d3.scaleSequential().interpolator(d3.interpolateGreens)
+      .domain([0, maxRatio]);
+
+    var xAxis = d3.axisBottom(xScale);
+    var yAxis = d3.axisLeft(yScale);
+
+    bar.append("g")
+      .attr("transform", "translate(" + (padding_left - padding) + ", " + (h - padding) + ")")
+      .call(xAxis);
+
+    bar.append("g")
+      .attr("transform", "translate(" + padding_left + ", 0)")
+      .call(yAxis);
+
+    bar.append("text")
+      .attr("x", w / 2)
+      .attr("y", h - padding + 40)
+      .attr("text-anchor", "middle")
+      .attr("font-size", "small")
+      .text(data_var)
+
+    bar.selectAll("rect")
+      .data(figure)
+      .join(
+        function (enter) {
+          enter.append("rect")
+            .attr("x", padding_left)
+            .attr("y", (d, i) => i * 31 + 55)
+            .attr('width', d => xScale(figure) - padding)
+            .attr('height', d => yScale.bandwidth())
+            .style("fill", d => colorScale(figure));
+        }
+      )
+
+    // Create data array of values to visualize
+    // var dataArray = [23, 13, 21, 14, 37, 15, 18, 34, 30];
+
+    // // Create variable for the SVG
+    // var svg = d3.select("body").append("svg")
+    //   .attr("height", "100%")
+    //   .attr("width", "100%");
+
+    // // Select, append to SVG, and add attributes to rectangles for bar chart
+    // svg.selectAll("rect")
+    //   .data(figure)
+    //   .enter().append("rect")
+    //   .attr("class", "bar")
+    //   .attr("height", function (d, i) { return (d * 10) })
+    //   .attr("width", "40")
+    //   .attr("x", function (d, i) { return (i * 60) + 25 })
+    //   .attr("y", function (d, i) { return 400 - (d * 10) });
+
+    // // Select, append to SVG, and add attributes to text
+    // svg.selectAll("text")
+    //   .data(region)
+    //   .enter().append("text")
+    //   .text(function (d) { return d })
+    //   .attr("class", "text")
+    //   .attr("x", function (d, i) { return (i * 60) + 36 })
+    //   .attr("y", function (d, i) { return 415 - (d * 10) });
+
+    // Show sidebar once everything is done loading
+    $('.sidebar-content').show()
   });
+
+
 }
 
 function regionChange() {
