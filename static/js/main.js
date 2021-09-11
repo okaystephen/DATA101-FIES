@@ -110,11 +110,27 @@ function sidebarChangeContent(data, region) {
 
         // Display ranking among other regions
         $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5></div>')
+        getRanking(data_var)
       }
     });
   });
 
 
+}
+
+function getRanking(data_var) {
+  d3.json('/fies').then(function (loop) {
+    loop.forEach(function (elem) {
+      var keys = Object.keys(elem);
+      console.log(keys)
+
+      keys.forEach(function (key) { //loop through keys array
+        if (key == data_var) {
+          $('.sidebar-content').append(`<p>${elem['Region']} - ${elem[data_var]}</p>`)
+        }
+      });
+    });
+  });
 }
 
 function regionChange() {
