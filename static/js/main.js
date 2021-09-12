@@ -104,17 +104,8 @@ function sidebarChangeContent(data, region) {
   $('.sidebar-content').hide()
 
   d3.json('/fies').then(function (loop) {
-    loop.forEach(function (elem) {
+    loop.some(function (elem) {
       if (region == elem['Region']) {
-        // Animate the map
-        if (elem['Region'] == "NCR") {
-          map.flyTo({
-            center: [121, 14.58],
-            zoom: 9.5,
-            essential: true // this animation is considered essential with respect to prefers-reduced-motion
-          });
-        }
-
         // Display information about region
         $('.sidebar-content').append(`<h4><b>${data} — ${region}</b></h4>`)
         $('.sidebar-content').append(`<p>The ${data} in ${region} was ${elem[data_var]}.</p>`)
@@ -122,11 +113,12 @@ function sidebarChangeContent(data, region) {
         // Display ranking among other regions
         $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5></div>')
         getRanking(data_var)
+        animateMap(region)
+
+        return true;
       }
     });
   });
-
-
 }
 
 function getRanking(data_var) {
@@ -148,6 +140,7 @@ function getRanking(data_var) {
         }
       });
     });
+
     console.log(region)
     console.log(figure)
     $('.sidebar-content').append(`<div id="bar"></div>`)
@@ -234,8 +227,51 @@ function getRanking(data_var) {
     // Show sidebar once everything is done loading
     $('.sidebar-content').show()
   });
+}
 
+function animateMap(region) {
+  // 'ARMM',
+  // 'CAR',
+  // 'NCR',
+  // 'Region I',
+  // 'Region II',
+  // 'Region III',
+  // 'Region IVA',
+  // 'Region IVB',
+  // 'Region IX',
+  // 'Region V',
+  // 'Region VI',
+  // 'Region VII',
+  // 'Region VIII',
+  // 'Region X',
+  // 'Region XI',
+  // 'Region XII',
+  // 'Region XIII'
 
+  // Animate the map
+  if (region == "ARMM") {
+    map.flyTo({
+      center: [124.24, 6.96],
+      zoom: 9.5,
+      essential: true // this animation is considered essential with respect to prefers-reduced-motion
+    });
+  }
+
+  else if (region == "CAR") {
+    map.flyTo({
+      center: [121.17, 17.35],
+      zoom: 9.5,
+      essential: true // this animation is considered essential with respect to prefers-reduced-motion
+    });
+  }
+
+  else if (region == "NCR") {
+    map.flyTo({
+      center: [121, 14.58],
+      zoom: 9.5,
+      essential: true // this animation is considered essential with respect to prefers-reduced-motion
+    });
+  }
 }
 
 function regionChange() {
@@ -255,31 +291,33 @@ function dataChange() {
     sidebarChangeContent(data, region)
   }
 }
-data = d3.csv("https://raw.githubusercontent.com/dlsudatasci/data-visualization/main/ched_sucfacultystudentratio_20162018.csv")
-  .then(makeChart);
 
-function makeChart(data) {
-  var students = data.map(function (d) { return d.students2017; });
-  var region = data.map(function (d) { return d.region; });
+// Bar chart
+// data = d3.csv("https://raw.githubusercontent.com/dlsudatasci/data-visualization/main/ched_sucfacultystudentratio_20162018.csv")
+//   .then(makeChart);
 
-  new Chart(document.getElementById("myCanvas"), {
-    type: 'bar',
-    data: {
-      labels: region,
-      datasets: [
-        {
-          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-          data: students
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Graph'
-      }
-    }
-  });
-}
+// function makeChart(data) {
+//   var students = data.map(function (d) { return d.students2017; });
+//   var region = data.map(function (d) { return d.region; });
+
+//   new Chart(document.getElementById("myCanvas"), {
+//     type: 'bar',
+//     data: {
+//       labels: region,
+//       datasets: [
+//         {
+//           backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+//           data: students
+//         }
+//       ]
+//     },
+//     options: {
+//       legend: { display: false },
+//       title: {
+//         display: true,
+//         text: 'Graph'
+//       }
+//     }
+//   });
+// }
 
