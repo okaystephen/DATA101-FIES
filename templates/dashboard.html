@@ -66,8 +66,8 @@
         </div>
 
         <!-- Sidebar Bottom -->
-        <div class="overflow-auto  pb-4 px-2">
-          <div class="loader"></div>
+        <div class="overflow-auto pb-4 px-2">
+          <div class="loader" style="display: none;"></div>
           <div class="sidebar-content">
             <h4><b>Hello!</b></h4>
             <p>Select a region and type of data in order to get started.</p>
@@ -83,7 +83,6 @@
     </div>
   </div>
 
-  <!-- <script type="text/javascript" src="static/js/map.js"></script> -->
   <script type="text/javascript">
     mapboxgl.accessToken = "{{mapbox_token}}";
 
@@ -96,6 +95,7 @@
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/iravillanueva/cksx86oy5c8s217rwkevw6ydl',
+      // style: 'mapbox://styles/mujisteph/cktgy4h211tjk17mw7zwi80zl',
       center: [121.20, 12.95],
       zoom: 4.7, // starting zoom,     
       minZoom: 4.7,
