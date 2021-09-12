@@ -17,7 +17,260 @@ $(document).ready(function () {
       data_select.append(`<option value="${elem.value}">${elem.label}</option>`);
     });
   });
+  
+  $.getJSON('https://raw.githubusercontent.com/okaystephen/DATA101-FIES/main/data/regions.geojson', function(data){
 
+
+    map.on('load', () => {
+      map.addSource('regions', {
+        type: 'geojson',
+        data: data
+      });
+      
+  
+      // Autonomous Region in Muslim Mindanao
+      // Cordillera Administrative Region
+      // National Capital Region
+      // Negros Island Region
+      // Region I
+      // Region II
+      // Region III
+      // Region IV-A
+      // Region IV-B
+      // Region V
+      // Region VI
+      // Region VII
+      // Region VIII
+      // Region IX
+      // Region X
+      // Region XI
+      // Region XII
+      // Region XIII
+  
+      map.addLayer({
+        'id': 'ARMM',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Autonomous Region in Muslim Mindanao']
+      });
+  
+      map.addLayer({
+        'id': 'CAR',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Cordillera Administrative Region']
+      });
+  
+      map.addLayer({
+        'id': 'NCR',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'National Capital Region']
+      });
+  
+      map.addLayer({
+        'id': 'Region I',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region I']
+      });
+  
+      map.addLayer({
+        'id': 'Region II',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region II']
+      });
+  
+      map.addLayer({
+        'id': 'Region III',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region III']
+      });
+  
+      map.addLayer({
+        'id': 'Region IVA',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region IV-A']
+      });
+  
+      map.addLayer({
+        'id': 'Region IVB',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region IV-B']
+      });
+  
+      map.addLayer({
+        'id': 'Region V',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region V']
+      });
+  
+      map.addLayer({
+        'id': 'Region VI',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region VI']
+      });
+  
+      map.addLayer({
+        'id': 'Region VII',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region VII']
+      });
+  
+      map.addLayer({
+        'id': 'Region VIII',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region VIII']
+      });
+  
+      map.addLayer({
+        'id': 'Region IX',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region IX']
+      });
+  
+      map.addLayer({
+        'id': 'Region X',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region X']
+      });
+  
+      map.addLayer({
+        'id': 'Region XI',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region XI']
+      });
+  
+      map.addLayer({
+        'id': 'Region XII',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region XII']
+      });
+  
+      map.addLayer({
+        'id': 'Region XIII',
+        'type': 'fill',
+        'source': 'regions',
+        'layout': {
+          'visibility': 'none'
+        },
+        'paint': {
+          'fill-color': '#a62b2b'
+        },
+        'filter': ['==', 'ADM1_EN', 'Region XIII']
+      });
+  
+    })
+    })
+  
   // d3.json("/fies", function (error, data) {
 
   //   if (error) {
@@ -391,10 +644,44 @@ function animateMap(region) {
   }
 }
 
+function shadeRegion(region){
+  var toggableID = ['ARMM',
+                    'CAR',
+                    'NCR',
+                    'Region I',
+                    'Region II',
+                    'Region III',
+                    'Region IVA',
+                    'Region IVB',
+                    'Region IX',
+                    'Region V',
+                    'Region VI',
+                    'Region VII',
+                    'Region VIII',
+                    'Region X',
+                    'Region XI',
+                    'Region XII',
+                    'Region XIII']
+
+  for (var i=0; i<toggableID.length; i++){
+    var id = toggableID[i]
+
+    if(id === region){
+      map.setLayoutProperty(id, 'visibility', 'visible'); 
+    } else{
+      map.setLayoutProperty(id, 'visibility', 'none'); 
+    }
+  }
+}
+
 function regionChange() {
   var data = $('#data_select').val()
   var region = $('#region_select').val()
 
+  if(region != ""){
+    shadeRegion(region)
+  }
+  
   if (data == "" || region == "") { } else {
     sidebarChangeContent(data, region)
   }
