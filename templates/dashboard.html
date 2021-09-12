@@ -83,13 +83,21 @@
   <!-- <script type="text/javascript" src="static/js/map.js"></script> -->
   <script type="text/javascript">
     mapboxgl.accessToken = "{{mapbox_token}}";
+
+    // Set bounds to Philippines.
+    const bounds = [
+      [111.36, 3.49], // Southwest coordinates
+      [131.35, 21.56] // Northeast coordinates
+    ];
+
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/iravillanueva/cksx86oy5c8s217rwkevw6ydl',
-      center: [122.20, 12.38],
-      zoom: 5, // starting zoom,     
-      minZoom: 5,
-      maxZoom: 22
+      center: [121.20, 12.95],
+      zoom: 4.7, // starting zoom,     
+      minZoom: 4.7,
+      maxZoom: 22,
+      maxBounds: bounds // Set the map's geographical boundaries.
     });
   </script>
 
