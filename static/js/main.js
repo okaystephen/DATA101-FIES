@@ -256,7 +256,7 @@ function animateMap(region) {
     map.flyTo({
       center: [124.24, 6.96],
       zoom: 9.5,
-      essential: true // this animation is considered essential with respect to prefers-reduced-motion
+      essential: true
     });
   }
 
@@ -264,7 +264,7 @@ function animateMap(region) {
     map.flyTo({
       center: [121.17, 17.35],
       zoom: 9.5,
-      essential: true // this animation is considered essential with respect to prefers-reduced-motion
+      essential: true
     });
   }
 
@@ -272,7 +272,119 @@ function animateMap(region) {
     map.flyTo({
       center: [121, 14.58],
       zoom: 9.5,
-      essential: true // this animation is considered essential with respect to prefers-reduced-motion
+      essential: true
+    });
+  }
+
+  else if (region == "Region I") {
+    map.flyTo({
+      center: [120.62, 16.08],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region II") {
+    map.flyTo({
+      center: [121.81, 16.98],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region III") {
+    map.flyTo({
+      center: [120.71, 15.48],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region IVA") {
+    map.flyTo({
+      center: [121.08, 14.10],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region IVB") {
+    map.flyTo({
+      center: [118.74, 9.84],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region IX") {
+    map.flyTo({
+      center: [123.26, 8.15],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region V") {
+    map.flyTo({
+      center: [123.41, 13.42],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region VI") {
+    map.flyTo({
+      center: [122.54, 11.01],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region VII") {
+    map.flyTo({
+      center: [124.06, 9.82],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region VIII") {
+    map.flyTo({
+      center: [125.04, 12.24],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region X") {
+    map.flyTo({
+      center: [124.69, 8.02],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region XI") {
+    map.flyTo({
+      center: [126.09, 7.30],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region XII") {
+    map.flyTo({
+      center: [124.69, 6.27],
+      zoom: 9.5,
+      essential: true
+    });
+  }
+
+  else if (region == "Region XIII") {
+    map.flyTo({
+      center: [125.74, 8.80],
+      zoom: 9.5,
+      essential: true
     });
   }
 }
