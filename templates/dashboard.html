@@ -35,8 +35,6 @@
     integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
   <link rel="stylesheet" href="static/css/dashboard.css">
-  <script type="text/javascript" src="static/js/main.js"></script>
-
 </head>
 
 <body>
@@ -92,13 +90,39 @@
 
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/iravillanueva/cksx86oy5c8s217rwkevw6ydl',
+      // style: 'mapbox://styles/iravillanueva/cksx86oy5c8s217rwkevw6ydl',
+      style: 'mapbox://styles/mujisteph/cktgy4h211tjk17mw7zwi80zl',
       center: [121.20, 12.95],
       zoom: 4.7, // starting zoom,     
       minZoom: 4.7,
       maxZoom: 22,
       maxBounds: bounds // Set the map's geographical boundaries.
     });
+
+    // map.on('load', () => {
+    //   map.addSource('mapbox-terrain', {
+    //     type: 'vector',
+    //     // Use any Mapbox-hosted tileset using its tileset id.
+    //     // Learn more about where to find a tileset id:
+    //     // https://docs.mapbox.com/help/glossary/tileset-id/
+    //     url: 'mapbox://mujisteph.2gqxq77o'
+    //   });
+    //   map.addLayer({
+    //     'id': 'mapbox-terrain',
+    //     'type': 'line',
+    //     'source': 'mapbox-terrain',
+    //     'source-layer': 'contour',
+    //     'layout': {
+    //       'line-join': 'round',
+    //       'line-cap': 'round'
+    //     },
+    //     'paint': {
+    //       'line-color': '#ff69b4',
+    //       'line-width': 1
+    //     }
+    //   });
+    // });
   </script>
+  <script type="text/javascript" src="static/js/main.js"></script>
 
 </body>

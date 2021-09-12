@@ -106,6 +106,15 @@ function sidebarChangeContent(data, region) {
   d3.json('/fies').then(function (loop) {
     loop.forEach(function (elem) {
       if (region == elem['Region']) {
+        // Animate the map
+        if (elem['Region'] == "NCR") {
+          map.flyTo({
+            center: [121, 14.58],
+            zoom: 9.5,
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+          });
+        }
+
         // Display information about region
         $('.sidebar-content').append(`<h4><b>${data} — ${region}</b></h4>`)
         $('.sidebar-content').append(`<p>The ${data} in ${region} was ${elem[data_var]}.</p>`)
