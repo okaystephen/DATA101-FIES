@@ -109,8 +109,10 @@ function sidebarChangeContent(data, region) {
     loop.some(function (elem) {
       if (region == elem['Region']) {
         // Display information about region
+        var val = elem[data_var];
+        var r = val.toFixed(2);
         $('.sidebar-content').append(`<h4><b>${data} — ${region}</b></h4>`)
-        $('.sidebar-content').append(`<p>The ${data} in ${region} was ${elem[data_var]}.</p>`)
+        $('.sidebar-content').append(`<p>The ${data} in ${region} has an average of <u>Php ${r}</u></p>`)
 
         // Display ranking among other regions
         $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5></div>')
