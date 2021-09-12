@@ -1,0 +1,19 @@
+OBJECTID *,Shape *,Shape_Length,Shape_Area,admin1Name_en,admin1Pcode,admin1RefName,admin1AltName1_en,admin1AltName2_en,admin0Name_en,admin0Pcode,date,validOn,validTo
+1,Polygon,53.623497,1.050272,Autonomous Region in Muslim Mindanao,PH150000000,<Null>,ARMM,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+2,Polygon,8.027454,1.546712,Cordillera Administrative Region,PH140000000,<Null>,CAR,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+3,Polygon,2.320234,0.050216,National Capital Region,PH130000000,<Null>,NCR,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+4,Polygon,14.995101,1.043983,Region I,PH010000000,<Null>,Ilocos Region,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+5,Polygon,19.139048,2.241812,Region II,PH020000000,<Null>,Cagayan Valley,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+6,Polygon,15.949563,1.793513,Region III,PH030000000,<Null>,Central Luzon,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+7,Polygon,27.624115,1.32671,Region IV-A,PH040000000,<Null>,Calabarzon,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+8,Polygon,78.804542,2.220374,Region IV-B,PH170000000,<Null>,Mimaropa,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+9,Polygon,23.181441,1.196677,Region IX,PH090000000,<Null>,Zamboanga Peninsula,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+10,Polygon,44.923243,1.446324,Region V,PH050000000,<Null>,Bicol Region,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+11,Polygon,27.589382,1.657135,Region VI,PH060000000,<Null>,Western Visayas,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+12,Polygon,29.113105,1.178431,Region VII,PH070000000,<Null>,Central Visayas,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+13,Polygon,42.021179,1.726804,Region VIII,PH080000000,<Null>,Eastern Visayas,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+14,Polygon,15.002953,1.435115,Region X,PH100000000,<Null>,Northern Mindanao,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+15,Polygon,17.934222,1.539971,Region XI,PH110000000,<Null>,Davao Region,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+16,Polygon,13.229749,1.471068,Region XII,PH120000000,<Null>,Soccsksargen,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+17,Polygon,28.166754,1.54082,Region XIII,PH160000000,<Null>,Caraga,<Null>,Philippines (the),PH,6/30/16,5/29/20,<Null>
+,,,,,,,,,,,,,
