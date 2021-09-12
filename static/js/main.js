@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  $(".loader").hide()
+
   var region_select = $('#region_select')
   var data_select = $('#data_select')
 
@@ -100,8 +102,8 @@ function sidebarChangeContent(data, region) {
 
   // Clear sidebar content
   $('.sidebar-content').empty()
-
   $('.sidebar-content').hide()
+  $(".loader").show()
 
   d3.json('/fies').then(function (loop) {
     loop.some(function (elem) {
@@ -225,6 +227,7 @@ function getRanking(data_var) {
     //   .attr("y", function (d, i) { return 415 - (d * 10) });
 
     // Show sidebar once everything is done loading
+    $(".loader").hide()
     $('.sidebar-content').show()
   });
 }
