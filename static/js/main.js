@@ -419,7 +419,7 @@ function getRanking(data_var) {
 
     console.log(region)
     console.log(figure)
-    $('.sidebar-content').append(`<div id="bar"></div>`)
+    $('.sidebar-content').append(`<div class="pb-3" id="bar"></div>`)
 
     // Create dictionary
     var dict = []
@@ -481,7 +481,14 @@ function getRanking(data_var) {
 
     bar.append("g")
       .attr("transform", "translate(" + (padding_left - padding) + ", " + (h - padding) + ")")
-      .call(xAxis);
+      .call(xAxis)
+      .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", ".15em")
+      .attr("transform", function (d) {
+        return "rotate(-65)"
+      });
 
     bar.append("g")
       .attr("transform", "translate(" + padding_left + ", 0)")
@@ -489,10 +496,12 @@ function getRanking(data_var) {
 
     bar.append("text")
       .attr("x", w / 2)
-      .attr("y", h - padding + 40)
+      .attr("y", 25)
       .attr("text-anchor", "middle")
-      .attr("font-size", "small")
-      .text(data_var)
+      .attr("font-size", "smaller")
+      .attr("font-weight", "bold")
+      .style("fill", "#64BB6A")
+      .text(data_var);
 
     bar.selectAll("rect")
       .data(mapped_figures)
