@@ -516,9 +516,13 @@ function getRanking(r, data_var) {
         }
       )
 
-    $(`text:contains(${r})`).css({
-      'font-weight': 'bold'
-    });
+    // $(`text:contains(${r})`).css({
+    //   'font-weight': 'bold'
+    // });
+
+    $("text").filter(function () {
+      return $(this).text() === r;
+    }).css("font-weight", "bold");
 
     // Show sidebar once everything is done loading
     $(".loader").hide()
@@ -717,12 +721,12 @@ function regionChange() {
   var data = $('#data_select').val()
   var region = $('#region_select').val()
 
-  if (region != "") {
-    shadeRegion(region)
-  }
-
   if (data == "" || region == "") { } else {
     sidebarChangeContent(data, region)
+  }
+
+  if (region != "") {
+    shadeRegion(region)
   }
 }
 
