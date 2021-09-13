@@ -388,7 +388,7 @@ function sidebarChangeContent(data, region) {
         // Display ranking among other regions
         $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5>')
         $('.sidebar-content').append(`<p>See how ${region} compares to other regions in the Philippines with regards to ${data}.</p></div>`)
-        getRanking(data_var)
+        getRanking(region, data_var)
         animateMap(region)
 
         return true;
@@ -397,7 +397,7 @@ function sidebarChangeContent(data, region) {
   });
 }
 
-function getRanking(data_var) {
+function getRanking(r, data_var) {
   d3.json('/fies').then(function (loop) {
     // <div id="bar"></div>
     var region = []
@@ -515,6 +515,10 @@ function getRanking(data_var) {
             .style("fill", d => colorScale(d.value));
         }
       )
+
+    $(`text:contains(${r})`).css({
+      'font-weight': 'bold'
+    });
 
     // Show sidebar once everything is done loading
     $(".loader").hide()
