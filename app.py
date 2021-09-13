@@ -46,7 +46,8 @@ def get_data():
                         'Total Fish and  marine products Expenditure': 'Total Fish and Marine Products Expenditure',
                         'Members with age less than 5 year old': 'Members with Age less than 5 years old',
                         'Members with age 5 - 17 years old': 'Members with Age 5-17 years old',
-                        'Total Number of Family members': 'Total Number of Family Members'}, inplace=True)
+                        'Total Number of Family members': 'Total Number of Family Members',
+                        'Number of Cellular phone': 'Number of Cellular Phone'}, inplace=True)
 
     data = sorted(df.columns.to_list())
 
@@ -77,7 +78,8 @@ def get_fies():
             'Total Fish and  marine products Expenditure': 'Total Fish and Marine Products Expenditure',
             'Members with age less than 5 year old': 'Members with Age less than 5 years old',
             'Members with age 5 - 17 years old': 'Members with Age 5-17 years old',
-            'Total Number of Family members': 'Total Number of Family Members'}, inplace=True)
+            'Total Number of Family members': 'Total Number of Family Members',
+            'Number of Cellular phone': 'Number of Cellular Phone'}, inplace=True)
 
     df_groupby = df.groupby(by=["Region"]).mean().reset_index()
     data_dict = df_groupby.to_dict(orient="records")
