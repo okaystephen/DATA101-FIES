@@ -277,8 +277,8 @@ $(document).ready(function () {
       });
 
     })
-   
 
+    
       var region_select = $('#region_select')
 
       d3.json('/regions').then(function (data) {
