@@ -8,8 +8,8 @@ $(document).ready(function () {
       data_select.append(`<option value="${elem.value}">${elem.label}</option>`);
     });
   });
-  
-  $.getJSON('https://raw.githubusercontent.com/okaystephen/DATA101-FIES/main/data/regions.geojson', function(data){
+
+  $.getJSON('https://raw.githubusercontent.com/okaystephen/DATA101-FIES/main/data/regions.geojson', function (data) {
 
 
     map.on('load', () => {
@@ -17,8 +17,8 @@ $(document).ready(function () {
         type: 'geojson',
         data: data
       });
-      
-  
+
+
       // Autonomous Region in Muslim Mindanao
       // Cordillera Administrative Region
       // National Capital Region
@@ -37,7 +37,7 @@ $(document).ready(function () {
       // Region XI
       // Region XII
       // Region XIII
-  
+
       map.addLayer({
         'id': 'ARMM',
         'type': 'fill',
@@ -51,7 +51,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Autonomous Region in Muslim Mindanao']
       });
-  
+
       map.addLayer({
         'id': 'CAR',
         'type': 'fill',
@@ -65,7 +65,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Cordillera Administrative Region']
       });
-  
+
       map.addLayer({
         'id': 'NCR',
         'type': 'fill',
@@ -79,7 +79,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'National Capital Region']
       });
-  
+
       map.addLayer({
         'id': 'Region I',
         'type': 'fill',
@@ -93,7 +93,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region I']
       });
-  
+
       map.addLayer({
         'id': 'Region II',
         'type': 'fill',
@@ -107,7 +107,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region II']
       });
-  
+
       map.addLayer({
         'id': 'Region III',
         'type': 'fill',
@@ -121,7 +121,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region III']
       });
-  
+
       map.addLayer({
         'id': 'Region IVA',
         'type': 'fill',
@@ -135,7 +135,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region IV-A']
       });
-  
+
       map.addLayer({
         'id': 'Region IVB',
         'type': 'fill',
@@ -149,7 +149,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region IV-B']
       });
-  
+
       map.addLayer({
         'id': 'Region V',
         'type': 'fill',
@@ -163,7 +163,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region V']
       });
-  
+
       map.addLayer({
         'id': 'Region VI',
         'type': 'fill',
@@ -177,7 +177,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region VI']
       });
-  
+
       map.addLayer({
         'id': 'Region VII',
         'type': 'fill',
@@ -191,7 +191,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region VII']
       });
-  
+
       map.addLayer({
         'id': 'Region VIII',
         'type': 'fill',
@@ -205,7 +205,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region VIII']
       });
-  
+
       map.addLayer({
         'id': 'Region IX',
         'type': 'fill',
@@ -219,7 +219,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region IX']
       });
-  
+
       map.addLayer({
         'id': 'Region X',
         'type': 'fill',
@@ -233,7 +233,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region X']
       });
-  
+
       map.addLayer({
         'id': 'Region XI',
         'type': 'fill',
@@ -247,7 +247,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region XI']
       });
-  
+
       map.addLayer({
         'id': 'Region XII',
         'type': 'fill',
@@ -261,7 +261,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region XII']
       });
-  
+
       map.addLayer({
         'id': 'Region XIII',
         'type': 'fill',
@@ -275,7 +275,7 @@ $(document).ready(function () {
         },
         'filter': ['==', 'ADM1_EN', 'Region XIII']
       });
-  
+
     })
    
 
@@ -288,8 +288,8 @@ $(document).ready(function () {
         });
       });
 
-    })
-  
+  })
+
   // d3.json("/fies", function (error, data) {
 
   //   if (error) {
@@ -387,8 +387,9 @@ function sidebarChangeContent(data, region) {
         $('.sidebar-content').append(`<p>The ${data} in ${region} has an average of <u>Php ${r}</u></p>`)
 
         // Display ranking among other regions
-        $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5></div>')
-        getRanking(data_var)
+        $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5>')
+        $('.sidebar-content').append(`<p>See how ${region} compares to other regions in the Philippines with regards to ${data}.</p></div>`)
+        getRanking(region, data_var)
         animateMap(region)
 
         return true;
@@ -397,7 +398,7 @@ function sidebarChangeContent(data, region) {
   });
 }
 
-function getRanking(data_var) {
+function getRanking(r, data_var) {
   d3.json('/fies').then(function (loop) {
     // <div id="bar"></div>
     var region = []
@@ -419,7 +420,22 @@ function getRanking(data_var) {
 
     console.log(region)
     console.log(figure)
-    $('.sidebar-content').append(`<div id="bar"></div>`)
+    $('.sidebar-content').append(`<div class="pb-3" id="bar"></div>`)
+
+    // Create dictionary
+    var dict = []
+    for (let i = 0; i < region.length; i++) {
+      dict.push({
+        region: region[i],
+        value: figure[i]
+      });
+    }
+
+    dict.sort(function (a, b) {
+      return b.value - a.value;
+    });
+
+    console.log(dict)
 
     // Make bar chart
     var w = 420;
@@ -431,12 +447,31 @@ function getRanking(data_var) {
       .attr("width", w)
       .attr("height", h);
 
+    var mapped = dict.map(d => {
+      return {
+        region: Object.keys(d)[0],
+        value: d[Object.keys(d)[0]],
+      }
+    });
+
+    var mapped_figures = dict.map(d => {
+      return {
+        figure: Object.keys(d)[1],
+        value: d[Object.keys(d)[1]],
+      }
+    });
+
     var maxRatio = d3.max(figure);
-    // var regions = data.map(function (d) { return d.region; });
+    var regions = mapped.map(d => d.value);
+
+    console.log(mapped)
+    console.log(maxRatio)
+    console.log(regions)
+    console.log(mapped_figures)
 
     var xScale = d3.scaleLinear([0, maxRatio], [padding, w - padding_left]);
     var yScale = d3.scaleBand()
-      .domain(region)
+      .domain(regions)
       .rangeRound([padding, h - padding])
       .padding(0.1);
     var colorScale = d3.scaleSequential().interpolator(d3.interpolateGreens)
@@ -447,7 +482,14 @@ function getRanking(data_var) {
 
     bar.append("g")
       .attr("transform", "translate(" + (padding_left - padding) + ", " + (h - padding) + ")")
-      .call(xAxis);
+      .call(xAxis)
+      .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", ".15em")
+      .attr("transform", function (d) {
+        return "rotate(-65)"
+      });
 
     bar.append("g")
       .attr("transform", "translate(" + padding_left + ", 0)")
@@ -455,50 +497,33 @@ function getRanking(data_var) {
 
     bar.append("text")
       .attr("x", w / 2)
-      .attr("y", h - padding + 40)
+      .attr("y", 25)
       .attr("text-anchor", "middle")
-      .attr("font-size", "small")
-      .text(data_var)
+      .attr("font-size", "smaller")
+      .attr("font-weight", "bold")
+      .style("fill", "#64BB6A")
+      .text(data_var);
 
     bar.selectAll("rect")
-      .data(figure)
+      .data(mapped_figures)
       .join(
         function (enter) {
           enter.append("rect")
             .attr("x", padding_left)
-            .attr("y", (d, i) => i * 31 + 55)
-            .attr('width', d => xScale(figure) - padding)
+            .attr("y", (d, i) => i * 29 + 55)
+            .attr('width', d => xScale(d.value) - padding)
             .attr('height', d => yScale.bandwidth())
-            .style("fill", d => colorScale(figure));
+            .style("fill", d => colorScale(d.value));
         }
       )
 
-    // Create data array of values to visualize
-    // var dataArray = [23, 13, 21, 14, 37, 15, 18, 34, 30];
+    // $(`text:contains(${r})`).css({
+    //   'font-weight': 'bold'
+    // });
 
-    // // Create variable for the SVG
-    // var svg = d3.select("body").append("svg")
-    //   .attr("height", "100%")
-    //   .attr("width", "100%");
-
-    // // Select, append to SVG, and add attributes to rectangles for bar chart
-    // svg.selectAll("rect")
-    //   .data(figure)
-    //   .enter().append("rect")
-    //   .attr("class", "bar")
-    //   .attr("height", function (d, i) { return (d * 10) })
-    //   .attr("width", "40")
-    //   .attr("x", function (d, i) { return (i * 60) + 25 })
-    //   .attr("y", function (d, i) { return 400 - (d * 10) });
-
-    // // Select, append to SVG, and add attributes to text
-    // svg.selectAll("text")
-    //   .data(region)
-    //   .enter().append("text")
-    //   .text(function (d) { return d })
-    //   .attr("class", "text")
-    //   .attr("x", function (d, i) { return (i * 60) + 36 })
-    //   .attr("y", function (d, i) { return 415 - (d * 10) });
+    $("text").filter(function () {
+      return $(this).text() === r;
+    }).css("font-weight", "bold");
 
     // Show sidebar once everything is done loading
     $(".loader").hide()
@@ -663,26 +688,26 @@ function animateMap(region) {
   }
 }
 
-function shadeRegion(region){
+function shadeRegion(region) {
   var toggableID = ['ARMM',
-                    'CAR',
-                    'NCR',
-                    'Region I',
-                    'Region II',
-                    'Region III',
-                    'Region IVA',
-                    'Region IVB',
-                    'Region IX',
-                    'Region V',
-                    'Region VI',
-                    'Region VII',
-                    'Region VIII',
-                    'Region X',
-                    'Region XI',
-                    'Region XII',
-                    'Region XIII']
+    'CAR',
+    'NCR',
+    'Region I',
+    'Region II',
+    'Region III',
+    'Region IVA',
+    'Region IVB',
+    'Region IX',
+    'Region V',
+    'Region VI',
+    'Region VII',
+    'Region VIII',
+    'Region X',
+    'Region XI',
+    'Region XII',
+    'Region XIII']
 
-  for (var i=0; i<toggableID.length; i++){
+  for (var i = 0; i < toggableID.length; i++) {
     var id = toggableID[i]
 
     if(id === region){
@@ -700,12 +725,12 @@ function regionChange() {
   var data = $('#data_select').val()
   var region = $('#region_select').val()
 
-  if(region != ""){
-    shadeRegion(region)
-  }
-  
   if (data == "" || region == "") { } else {
     sidebarChangeContent(data, region)
+  }
+
+  if (region != "") {
+    shadeRegion(region)
   }
 }
 
@@ -715,6 +740,16 @@ function dataChange() {
 
   if (data == "" || region == "") { } else {
     sidebarChangeContent(data, region)
+  }
+}
+
+function hideField() {
+  if ($(".hider").text() == "Hide Dropdown") {
+    $(".hider").text("Show Dropdown")
+    $(".sidebar-top").hide()
+  } else {
+    $(".hider").text("Hide Dropdown")
+    $(".sidebar-top").show()
   }
 }
 

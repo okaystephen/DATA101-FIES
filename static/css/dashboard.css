@@ -54,6 +54,17 @@ a:hover {
     transition: 0.3s;
 }
 
+.hider {
+    transition: 0.3s;
+}
+
+.hider:hover {
+    color:#38782C; 
+    text-decoration:none; 
+    cursor:pointer;  
+    transition: 0.3s;
+}
+
 .bg-white {
     background-color: #FFFFFF;
 }
