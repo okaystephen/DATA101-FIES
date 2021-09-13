@@ -84,7 +84,7 @@
   </div>
 
   <script type="text/javascript">
-    mapboxgl.accessToken = "{{mapbox_token}}";
+    //mapboxgl.accessToken = "{{mapbox_token}}";
 
     // Set bounds to Philippines.
     const bounds = [
@@ -103,6 +103,31 @@
       maxBounds: bounds // Set the map's geographical boundaries.
     });
 
+    var lnglat = [ [124.24, 6.96], [121.17, 17.35], [121, 14.58], [120.62, 16.08], [121.81, 16.98], [120.71, 15.48], [121.08, 14.10], 
+                   [118.74, 9.84], [123.26, 8.15], [123.41, 13.42], [122.54, 11.01], [124.06, 9.82], [125.04, 12.24], [124.69, 8.02], 
+                   [126.09, 7.30], [124.69, 6.27], [125.74, 8.80]
+    ]
+    var toggableID = ['ARMM', 'CAR', 'NCR', 'Region I', 'Region II', 'Region III',
+                      'Region IVA', 'Region IVB', 'Region IX', 'Region V', 'Region VI',
+                      'Region VII', 'Region VIII', 'Region X', 'Region XI', 'Region XII', 'Region XIII']
+
+    toggableID.forEach((x,i) => {
+        const el = document.createElement('div');
+        el.className = 'marker';
+        el.setAttribute("id", x);
+        el.style.display = "none";
+
+        new mapboxgl.Marker(el)
+              .setLngLat(lnglat[i])
+              .setPopup(
+                new mapboxgl.Popup({ offset: 25, closeButton: false }) 
+                  .setHTML(
+                  `<strong>Region: </strong>${x}` 
+                ) //add other necessary info
+              )
+              .addTo(map);
+    });
+            
     // map.on('load', () => {
     //   map.addSource('mapbox-terrain', {
     //     type: 'vector',

@@ -126,3 +126,21 @@ hr {
     opacity: 1;
     margin-top: 40px;
 }
+
+.marker {
+    background-image: url('/static/img/mapbox-icon.png');
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+    text-align: left;
+    font-family: 'Poppins';
+}

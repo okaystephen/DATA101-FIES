@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $(".loader").hide()
   var data_select = $('#data_select')
-  
+
   d3.json('/data').then(function (data) {
     console.log(data)
     data.forEach(function (elem) {
@@ -277,15 +277,16 @@ $(document).ready(function () {
       });
   
     })
+   
 
-    var region_select = $('#region_select')
+      var region_select = $('#region_select')
 
-    d3.json('/regions').then(function (data) {
-      console.log(data)
-      data.forEach(function (elem) {
-        region_select.append(`<option value="${elem.value}">${elem.label}</option>`);
+      d3.json('/regions').then(function (data) {
+        console.log(data)
+        data.forEach(function (elem) {
+          region_select.append(`<option value="${elem.value}">${elem.label}</option>`);
+        });
       });
-    });
 
     })
   
@@ -685,9 +686,12 @@ function shadeRegion(region){
     var id = toggableID[i]
 
     if(id === region){
+      document.getElementById(id).style.display = "block"
       map.setLayoutProperty(id, 'visibility', 'visible'); 
     } else{
       map.setLayoutProperty(id, 'visibility', 'none'); 
+      document.getElementById(id).style.display = "none"
+      
     }
   }
 }
