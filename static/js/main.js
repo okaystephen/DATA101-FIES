@@ -1,15 +1,6 @@
 $(document).ready(function () {
   $(".loader").hide()
-
-  var region_select = $('#region_select')
   var data_select = $('#data_select')
-
-  d3.json('/regions').then(function (data) {
-    console.log(data)
-    data.forEach(function (elem) {
-      region_select.append(`<option value="${elem.value}">${elem.label}</option>`);
-    });
-  });
 
   d3.json('/data').then(function (data) {
     console.log(data)
@@ -55,7 +46,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Autonomous Region in Muslim Mindanao']
       });
@@ -68,7 +60,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Cordillera Administrative Region']
       });
@@ -81,7 +74,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'National Capital Region']
       });
@@ -94,7 +88,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region I']
       });
@@ -107,7 +102,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region II']
       });
@@ -120,7 +116,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region III']
       });
@@ -133,7 +130,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region IV-A']
       });
@@ -146,7 +144,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region IV-B']
       });
@@ -159,7 +158,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region V']
       });
@@ -172,7 +172,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region VI']
       });
@@ -185,7 +186,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region VII']
       });
@@ -198,7 +200,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region VIII']
       });
@@ -211,7 +214,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region IX']
       });
@@ -224,7 +228,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region X']
       });
@@ -237,7 +242,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region XI']
       });
@@ -250,7 +256,8 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region XII']
       });
@@ -263,12 +270,23 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b'
+          'fill-color': '#a62b2b',
+          'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region XIII']
       });
 
     })
+
+    var region_select = $('#region_select')
+
+    d3.json('/regions').then(function (data) {
+      console.log(data)
+      data.forEach(function (elem) {
+        region_select.append(`<option value="${elem.value}">${elem.label}</option>`);
+      });
+    });
+
   })
 
   // d3.json("/fies", function (error, data) {
