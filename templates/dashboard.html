@@ -145,12 +145,14 @@
 
       new mapboxgl.Marker(el)
         .setLngLat(lnglat[i])
-        .setText(desc[i])
+        
         .setPopup(
           new mapboxgl.Popup({ offset: 25 })
             .setHTML(
-              `<strong>Region: </strong>${x}`
+              `<strong>Region: </strong>${x}
+              ${desc[i]}`
             ) //add other necessary info
+            //.setText(`<strong>Region: </strong>${x}` + desc[i])
         )
         .addTo(map);
     });
