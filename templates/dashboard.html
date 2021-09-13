@@ -44,23 +44,31 @@
       <div class="col-4 dashboard">
         <!-- Sidebar Bottom -->
         <div class="pt-4 pb-3 px-2 sticky-top bg-white">
-          <a href="/">
-            <p style="font-size: small;"><i class="fas fa-arrow-left"></i> Back to Home</p>
-          </a>
+
+          <div class="row">
+            <div class="col">
+              <a href="/">
+                <p style="font-size: small;"><i class="fas fa-arrow-left"></i> Back to Home</p>
+              </a>
+            </div>
+            <div class="col text-end">
+              <p class="hider" style="font-size: small;" onclick="hideField()">Hide Dropdown</p>
+            </div>
+          </div>
 
           <h3><b>Family Income and Expenditure Survey</b></h3>
 
+          <div class="sidebar-top">
+            <p class="pt-2" style="font-weight: 500;">Region</p>
+            <select class="form-select" id="region_select" name="region_select" onchange="regionChange()">
+              <option value="">Select a Region</option>
+            </select>
 
-
-          <p class="pt-2" style="font-weight: 500;">Region</p>
-          <select class="form-select" id="region_select" name="region_select" onchange="regionChange()">
-            <option value="">Select a Region</option>
-          </select>
-
-          <p class="pt-2" style="font-weight: 500;">Data</p>
-          <select class="form-select" id="data_select" name="data_select" onchange="dataChange()">
-            <option value="">Select a Data</option>
-          </select>
+            <p class="pt-2" style="font-weight: 500;">Data</p>
+            <select class="form-select" id="data_select" name="data_select" onchange="dataChange()">
+              <option value="">Select a Data</option>
+            </select>
+          </div>
 
           <hr class='w-100' style="color: #64BB6A;" />
         </div>

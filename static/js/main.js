@@ -731,6 +731,16 @@ function dataChange() {
   }
 }
 
+function hideField() {
+  if ($(".hider").text() == "Hide Dropdown") {
+    $(".hider").text("Show Dropdown")
+    $(".sidebar-top").hide()
+  } else {
+    $(".hider").text("Hide Dropdown")
+    $(".sidebar-top").show()
+  }
+}
+
 // Bar chart
 // data = d3.csv("https://raw.githubusercontent.com/dlsudatasci/data-visualization/main/ched_sucfacultystudentratio_20162018.csv")
 //   .then(makeChart);
