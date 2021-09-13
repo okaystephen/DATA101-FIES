@@ -92,7 +92,8 @@
   </div>
 
   <script type="text/javascript">
-    mapboxgl.accessToken = "{{mapbox_token}}";
+    // mapboxgl.accessToken = "{{mapbox_token}}";
+    mapboxgl.accessToken = "pk.eyJ1IjoiaXJhdmlsbGFudWV2YSIsImEiOiJja3RoMmg0dXYwbzFzMnVudWI2NnV5aHBvIn0.YTSYOwzE_EKjd-oT4CqDTA";
 
     // Set bounds to Philippines.
     const bounds = [
@@ -119,6 +120,23 @@
       'Region IVA', 'Region IVB', 'Region IX', 'Region V', 'Region VI',
       'Region VII', 'Region VIII', 'Region X', 'Region XI', 'Region XII', 'Region XIII']
 
+    var desc = ['1','2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
+
+    // map.addSource ('places',{
+    //   'type': 'geojson',
+    //   'data': {
+    //     'type': 'FeatureCollection',
+    //     'features': [{
+    //     'type': 'Feature',
+    //     'properties': {
+    //         'description': 'dapat may description dito'},
+    //     'geometry': {
+    //     'type': 'Point',
+    //     'coordinates': [124.24, 6.96]}
+    //     }]
+    //   }
+    // })
+
     toggableID.forEach((x, i) => {
       const el = document.createElement('div');
       el.className = 'marker';
@@ -127,6 +145,7 @@
 
       new mapboxgl.Marker(el)
         .setLngLat(lnglat[i])
+        .setText(desc[i])
         .setPopup(
           new mapboxgl.Popup({ offset: 25 })
             .setHTML(
