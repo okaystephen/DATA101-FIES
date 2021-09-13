@@ -120,7 +120,9 @@
       'Region IVA', 'Region IVB', 'Region IX', 'Region V', 'Region VI',
       'Region VII', 'Region VIII', 'Region X', 'Region XI', 'Region XII', 'Region XIII']
 
-    var desc = ['1','2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
+    var desc = ['1','2', 
+                'Has the highest expenditure in Food,  Housing and Water, Meat, Communication, Clothing and Other Miscellaneous Goods', 
+    '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
 
     // map.addSource ('places',{
     //   'type': 'geojson',
@@ -137,25 +139,29 @@
     //   }
     // })
 
+    
+
     toggableID.forEach((x, i) => {
       const el = document.createElement('div');
       el.className = 'marker';
       el.setAttribute("id", x);
       el.style.display = "none";
 
-      new mapboxgl.Marker(el)
+     var markers =  new mapboxgl.Marker(el)
         .setLngLat(lnglat[i])
-        
         .setPopup(
           new mapboxgl.Popup({ offset: 25 })
             .setHTML(
               `<strong>Region: </strong>${x}
-              ${desc[i]}`
-            ) //add other necessary info
-            //.setText(`<strong>Region: </strong>${x}` + desc[i])
+              <p> ${desc[i]} </p>`
+            ) 
         )
         .addTo(map);
+
     });
+
+
+
 
     // map.on('load', () => {
     //   map.addSource('mapbox-terrain', {
