@@ -500,7 +500,7 @@ function getRanking(data_var) {
         function (enter) {
           enter.append("rect")
             .attr("x", padding_left)
-            .attr("y", (d, i) => i * 31 + 55)
+            .attr("y", (d, i) => i * 29 + 55)
             .attr('width', d => xScale(d.value) - padding)
             .attr('height', d => yScale.bandwidth())
             .style("fill", d => colorScale(d.value));
