@@ -17,7 +17,7 @@ $(document).ready(function () {
     map.on('load', () => {
       map.addSource('regions', {
         type: 'geojson',
-        data: data
+        data: data,
       });
 
       map.addLayer({
@@ -372,7 +372,7 @@ function sidebarChangeContent(data, region) {
         $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5>')
         $('.sidebar-content').append(`<p>See how ${region} compares to other regions in the Philippines with regards to ${data}.</p></div>`)
         getRanking(region, data_var)
-        animateMap(region)
+        animateMap(region, r, data_var)
 
         return true;
       }
@@ -516,27 +516,39 @@ function getRanking(r, data_var) {
   });
 }
 
-function animateMap(region) {
-  // 'ARMM',
-  // 'CAR',
-  // 'NCR',
-  // 'Region I',
-  // 'Region II',
-  // 'Region III',
-  // 'Region IVA',
-  // 'Region IVB',
-  // 'Region IX',
-  // 'Region V',
-  // 'Region VI',
-  // 'Region VII',
-  // 'Region VIII',
-  // 'Region X',
-  // 'Region XI',
-  // 'Region XII',
-  // 'Region XIII'
+function animateMap(region, value, type) {
+  $('.marker').remove()
+
+  const el = document.createElement('div');
+  el.className = 'marker';
+
+  var markers = new mapboxgl.Marker(el);
+
+  var popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false
+  });
+
+  var lnglat = [[124.24, 6.96], [121.17, 17.35], [121, 14.58], [120.62, 16.08], [121.81, 16.98], [120.71, 15.48], [121.08, 14.10],
+  [118.74, 9.84], [123.26, 8.15], [123.41, 13.42], [122.54, 11.01], [124.06, 9.82], [125.04, 12.24], [124.69, 8.02],
+  [126.09, 7.30], [124.69, 6.27], [125.74, 8.80]
+  ]
+  var toggableID = ['ARMM', 'CAR', 'NCR', 'Region I', 'Region II', 'Region III',
+    'Region IVA', 'Region IVB', 'Region IX', 'Region V', 'Region VI',
+    'Region VII', 'Region VIII', 'Region X', 'Region XI', 'Region XII', 'Region XIII']
 
   // Animate the map
   if (region == "ARMM") {
+    el.setAttribute("id", toggableID[0]);
+    markers.setLngLat(lnglat[0]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [122.24, 6.96],
       zoom: 6,
@@ -545,6 +557,16 @@ function animateMap(region) {
   }
 
   else if (region == "CAR") {
+    el.setAttribute("id", toggableID[1]);
+    markers.setLngLat(lnglat[1]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [121.17, 17.35],
       zoom: 7,
@@ -553,6 +575,16 @@ function animateMap(region) {
   }
 
   else if (region == "NCR") {
+    el.setAttribute("id", toggableID[2]);
+    markers.setLngLat(lnglat[2]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [121, 14.58],
       zoom: 9.5,
@@ -561,6 +593,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region I") {
+    el.setAttribute("id", toggableID[3]);
+    markers.setLngLat(lnglat[3]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [120.62, 17.08],
       zoom: 6.5,
@@ -569,6 +611,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region II") {
+    el.setAttribute("id", toggableID[4]);
+    markers.setLngLat(lnglat[4]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [121.81, 18.2],
       zoom: 6.2,
@@ -577,6 +629,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region III") {
+    el.setAttribute("id", toggableID[5]);
+    markers.setLngLat(lnglat[5]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [120.71, 15.48],
       zoom: 7,
@@ -585,6 +647,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region IVA") {
+    el.setAttribute("id", toggableID[6]);
+    markers.setLngLat(lnglat[6]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [121.08, 14.10],
       zoom: 7,
@@ -593,6 +665,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region IVB") {
+    el.setAttribute("id", toggableID[7]);
+    markers.setLngLat(lnglat[7]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [118.74, 10.84],
       zoom: 6,
@@ -601,6 +683,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region IX") {
+    el.setAttribute("id", toggableID[8]);
+    markers.setLngLat(lnglat[8]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [122.8, 7.8],
       zoom: 7.3,
@@ -609,6 +701,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region V") {
+    el.setAttribute("id", toggableID[9]);
+    markers.setLngLat(lnglat[9]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [123.41, 13],
       zoom: 7,
@@ -617,6 +719,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region VI") {
+    el.setAttribute("id", toggableID[10]);
+    markers.setLngLat(lnglat[10]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [122.54, 11.01],
       zoom: 7,
@@ -625,6 +737,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region VII") {
+    el.setAttribute("id", toggableID[11]);
+    markers.setLngLat(lnglat[11]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [124.06, 10.1],
       zoom: 7,
@@ -633,6 +755,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region VIII") {
+    el.setAttribute("id", toggableID[12]);
+    markers.setLngLat(lnglat[12]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [125.04, 11.3],
       zoom: 7,
@@ -641,6 +773,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region X") {
+    el.setAttribute("id", toggableID[13]);
+    markers.setLngLat(lnglat[13]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [124.69, 8.02],
       zoom: 7,
@@ -649,6 +791,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region XI") {
+    el.setAttribute("id", toggableID[14]);
+    markers.setLngLat(lnglat[14]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [126.09, 7.30],
       zoom: 7,
@@ -657,6 +809,16 @@ function animateMap(region) {
   }
 
   else if (region == "Region XII") {
+    el.setAttribute("id", toggableID[15]);
+    markers.setLngLat(lnglat[15]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [124.69, 6.27],
       zoom: 7,
@@ -665,11 +827,45 @@ function animateMap(region) {
   }
 
   else if (region == "Region XIII") {
+    el.setAttribute("id", toggableID[16]);
+    markers.setLngLat(lnglat[16]).addTo(map);
+    popup.setHTML(
+      `<strong>Region: </strong>${region}
+        <br>
+        <strong>Type: </strong>${type}
+        <br>
+        <strong>Value: </strong>${value}`
+    );
+
     map.flyTo({
       center: [125.74, 9.2],
       zoom: 7,
       essential: true
     });
+  }
+  markers.getElement().addEventListener('mouseenter', () => {
+    map.getCanvas().style.cursor = 'pointer';
+    markers.setPopup(popup);
+  })
+
+  markers.getElement().addEventListener('mouseleave', () => {
+    map.getCanvas().style.cursor = '';
+    popup.remove();
+  })
+
+  for (var i = 0; i < toggableID.length; i++) {
+
+    if (document.getElementById(toggableID[i]) == null) {
+      map.setLayoutProperty(toggableID[i], 'visibility', 'none');
+      continue
+    }
+    else if (toggableID[i] === region) {
+      document.getElementById(toggableID[i]).style.display = "block"
+      map.setLayoutProperty(toggableID[i], 'visibility', 'visible');
+    } else {
+      map.setLayoutProperty(toggableID[i], 'visibility', 'none');
+      document.getElementById(toggableID[i]).style.display = "none"
+    }
   }
 }
 
@@ -712,10 +908,6 @@ function regionChange() {
 
   if (data == "" || region == "") { } else {
     sidebarChangeContent(data, region)
-  }
-
-  if (region != "") {
-    shadeRegion(region)
   }
 }
 
