@@ -92,9 +92,7 @@
   </div>
 
   <script type="text/javascript">
-     //mapboxgl.accessToken = "{{mapbox_token}}";
-     mapboxgl.accessToken = "pk.eyJ1IjoiaXJhdmlsbGFudWV2YSIsImEiOiJja3RoMmg0dXYwbzFzMnVudWI2NnV5aHBvIn0.YTSYOwzE_EKjd-oT4CqDTA";
-
+    mapboxgl.accessToken = "{{mapbox_token}}";
 
     // Set bounds to Philippines.
     const bounds = [
@@ -121,10 +119,10 @@
       'Region IVA', 'Region IVB', 'Region IX', 'Region V', 'Region VI',
       'Region VII', 'Region VIII', 'Region X', 'Region XI', 'Region XII', 'Region XIII']
 
-    var desc = ['1','2', 
-                'Has the highest expenditure in Food,  Housing and Water, Meat, Communication, Clothing and Other Miscellaneous Goods', 
-    '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
-    
+    var desc = ['1', '2',
+      'Has the highest expenditure in Food,  Housing and Water, Meat, Communication, Clothing and Other Miscellaneous Goods',
+      '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
+
 
     // toggableID.forEach((x, i) => {
     //   const el = document.createElement('div');
@@ -147,34 +145,34 @@
     //     })
     // });
 
-   // function forMarker(data, region){
+    // function forMarker(data, region){
     //  d3.json('/fies').then(function (toggableID) {
 
     //    var region = []
 
-        toggableID.forEach((x, i) => {
-          const el = document.createElement('div');
-          el.className = 'marker';
-          el.setAttribute("id", x);
-          el.style.display = "none";
+    toggableID.forEach((x, i) => {
+      const el = document.createElement('div');
+      el.className = 'marker';
+      el.setAttribute("id", x);
+      el.style.display = "none";
 
-        var markers =  new mapboxgl.Marker(el)
-            .setLngLat(lnglat[i])
-            .addTo(map);
+      var markers = new mapboxgl.Marker(el)
+        .setLngLat(lnglat[i])
+        .addTo(map);
 
-          var popup = new mapboxgl.Popup({offset: 25})
-            .setHTML(
-                  `<strong>Region: </strong>${x}
+      var popup = new mapboxgl.Popup({ offset: 25 })
+        .setHTML(
+          `<strong>Region: </strong>${x}
                   <p> ${desc[i]} </p>`
-              );
+        );
 
-            markers.getElement().addEventListener('click', () => {
-              markers.setPopup(popup)
-            })
-        });
-   //     console.log(region)
-   //  })
-   // }
+      markers.getElement().addEventListener('click', () => {
+        markers.setPopup(popup)
+      })
+    });
+    //     console.log(region)
+    //  })
+    // }
 
 
 
