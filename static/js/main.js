@@ -11,32 +11,14 @@ $(document).ready(function () {
 
   $.getJSON('https://raw.githubusercontent.com/okaystephen/DATA101-FIES/main/data/regions.geojson', function (data) {
 
+    // color = '#024164' // blue
+    color = '#a62b2b' // red
 
     map.on('load', () => {
       map.addSource('regions', {
         type: 'geojson',
         data: data
       });
-
-
-      // Autonomous Region in Muslim Mindanao
-      // Cordillera Administrative Region
-      // National Capital Region
-      // Negros Island Region
-      // Region I
-      // Region II
-      // Region III
-      // Region IV-A
-      // Region IV-B
-      // Region V
-      // Region VI
-      // Region VII
-      // Region VIII
-      // Region IX
-      // Region X
-      // Region XI
-      // Region XII
-      // Region XIII
 
       map.addLayer({
         'id': 'ARMM',
@@ -46,7 +28,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Autonomous Region in Muslim Mindanao']
@@ -60,7 +42,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Cordillera Administrative Region']
@@ -74,7 +56,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'National Capital Region']
@@ -88,7 +70,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region I']
@@ -102,7 +84,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region II']
@@ -116,7 +98,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region III']
@@ -130,7 +112,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region IV-A']
@@ -144,7 +126,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region IV-B']
@@ -158,7 +140,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region V']
@@ -172,7 +154,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region VI']
@@ -186,7 +168,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region VII']
@@ -200,7 +182,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region VIII']
@@ -214,7 +196,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region IX']
@@ -228,7 +210,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region X']
@@ -242,7 +224,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region XI']
@@ -256,7 +238,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region XII']
@@ -270,7 +252,7 @@ $(document).ready(function () {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': '#a62b2b',
+          'fill-color': color,
           'fill-opacity': 0.61
         },
         'filter': ['==', 'ADM1_EN', 'Region XIII']
@@ -384,7 +366,7 @@ function sidebarChangeContent(data, region) {
         var val = elem[data_var];
         var r = val.toFixed(2);
         $('.sidebar-content').append(`<h4><b>${data} — ${region}</b></h4>`)
-        $('.sidebar-content').append(`<p>The ${data} in ${region} has an average of <u>Php ${r}</u></p>`)
+        $('.sidebar-content').append(`<p>The ${data} in ${region} has an average of <u>₱<span id="value">${r}</span></u></p>`)
 
         // Display ranking among other regions
         $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5>')
@@ -523,7 +505,10 @@ function getRanking(r, data_var) {
 
     $("text").filter(function () {
       return $(this).text() === r;
-    }).css("font-weight", "bold");
+    }).css({
+      'font-weight': 'bold',
+      'text-transform': 'uppercase'
+    });
 
     // Show sidebar once everything is done loading
     $(".loader").hide()
@@ -724,8 +709,6 @@ function shadeRegion(region) {
 function regionChange() {
   var data = $('#data_select').val()
   var region = $('#region_select').val()
-
-  animateMap(region) // temporary; remove after 
 
   if (data == "" || region == "") { } else {
     sidebarChangeContent(data, region)
