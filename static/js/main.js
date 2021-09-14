@@ -802,7 +802,7 @@ function animateMap(region, value, type) {
     );
 
     map.flyTo({
-      center: [126.09, 7.30],
+      center: [126.16, 6.70],
       zoom: 7,
       essential: true
     });
