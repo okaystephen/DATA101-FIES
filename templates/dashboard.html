@@ -15,13 +15,13 @@
   <!-- Mapbox -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
-  <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
     crossorigin="anonymous"></script>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
 
@@ -89,108 +89,106 @@
         <div id='map' class='map-container'></div>
       </div>
     </div>
-  </div>
 
-  <script type="text/javascript">
-    mapboxgl.accessToken = "{{mapbox_token}}";
+    <script type="text/javascript">
+      mapboxgl.accessToken = "{{mapbox_token}}";
 
+      // Set bounds to Philippines.
+      const bounds = [
+        [111.36, 3.49], // Southwest coordinates
+        [131.35, 21.56] // Northeast coordinates
+      ];
 
-    // Set bounds to Philippines.
-    const bounds = [
-      [111.36, 3.49], // Southwest coordinates
-      [131.35, 21.56] // Northeast coordinates
-    ];
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/iravillanueva/cksx86oy5c8s217rwkevw6ydl',
+        center: [121.20, 12.95],
+        zoom: 4.7, // starting zoom,     
+        minZoom: 4.7,
+        maxZoom: 22,
+        maxBounds: bounds // Set the map's geographical boundaries.
+      });
 
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/iravillanueva/cksx86oy5c8s217rwkevw6ydl',
-      center: [121.20, 12.95],
-      zoom: 4.7, // starting zoom,     
-      minZoom: 4.7,
-      maxZoom: 22,
-      maxBounds: bounds // Set the map's geographical boundaries.
-    });
+      var lnglat = [[124.24, 6.96], [121.17, 17.35], [121, 14.58], [120.62, 16.08], [121.81, 16.98], [120.71, 15.48], [121.08, 14.10],
+      [118.74, 9.84], [123.26, 8.15], [123.41, 13.42], [122.54, 11.01], [124.06, 9.82], [125.04, 12.24], [124.69, 8.02],
+      [126.09, 7.30], [124.69, 6.27], [125.74, 8.80]
+      ]
+      var toggableID = ['ARMM', 'CAR', 'NCR', 'Region I', 'Region II', 'Region III',
+        'Region IVA', 'Region IVB', 'Region IX', 'Region V', 'Region VI',
+        'Region VII', 'Region VIII', 'Region X', 'Region XI', 'Region XII', 'Region XIII']
 
-    var lnglat = [[124.24, 6.96], [121.17, 17.35], [121, 14.58], [120.62, 16.08], [121.81, 16.98], [120.71, 15.48], [121.08, 14.10],
-    [118.74, 9.84], [123.26, 8.15], [123.41, 13.42], [122.54, 11.01], [124.06, 9.82], [125.04, 12.24], [124.69, 8.02],
-    [126.09, 7.30], [124.69, 6.27], [125.74, 8.80]
-    ]
-    var toggableID = ['ARMM', 'CAR', 'NCR', 'Region I', 'Region II', 'Region III',
-      'Region IVA', 'Region IVB', 'Region IX', 'Region V', 'Region VI',
-      'Region VII', 'Region VIII', 'Region X', 'Region XI', 'Region XII', 'Region XIII']
+      var desc = ['1', '2',
+        'Has the highest expenditure in Food,  Housing and Water, Meat, Communication, Clothing and Other Miscellaneous Goods',
+        '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
 
-    var desc = ['1', '2',
-      'Has the highest expenditure in Food,  Housing and Water, Meat, Communication, Clothing and Other Miscellaneous Goods',
-      '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
+      // toggableID.forEach((x, i) => {
+      //   const el = document.createElement('div');
+      //   el.className = 'marker';
+      //   el.setAttribute("id", x);
+      //   el.style.display = "none";
 
-    // toggableID.forEach((x, i) => {
-    //   const el = document.createElement('div');
-    //   el.className = 'marker';
-    //   el.setAttribute("id", x);
-    //   el.style.display = "none";
+      //   var markers = new mapboxgl.Marker(el)
+      //     .setLngLat(lnglat[i])
+      //     .addTo(map);
 
-    //   var markers = new mapboxgl.Marker(el)
-    //     .setLngLat(lnglat[i])
-    //     .addTo(map);
+      //   var popup = new mapboxgl.Popup({
+      //     offset: 25,
+      //     closeButton: false,
+      //     closeOnClick: false
+      //   }).setHTML(
+      //     `<strong>Region: </strong>${x}
+      //     <br>
+      //     <strong>Value: </strong>Insert value
+      //     <br>
+      //     <p> ${desc[i]} </p>`
+      //   );
 
-    //   var popup = new mapboxgl.Popup({
-    //     offset: 25,
-    //     closeButton: false,
-    //     closeOnClick: false
-    //   }).setHTML(
-    //     `<strong>Region: </strong>${x}
-    //     <br>
-    //     <strong>Value: </strong>Insert value
-    //     <br>
-    //     <p> ${desc[i]} </p>`
-    //   );
+      //   markers.getElement().addEventListener('mouseenter', () => {
+      //     map.getCanvas().style.cursor = 'pointer';
+      //     markers.setPopup(popup);
+      //   })
 
-    //   markers.getElement().addEventListener('mouseenter', () => {
-    //     map.getCanvas().style.cursor = 'pointer';
-    //     markers.setPopup(popup);
-    //   })
+      //   markers.getElement().addEventListener('mouseleave', () => {
+      //     map.getCanvas().style.cursor = '';
+      //     popup.remove();
+      //   })
 
-    //   markers.getElement().addEventListener('mouseleave', () => {
-    //     map.getCanvas().style.cursor = '';
-    //     popup.remove();
-    //   })
+      // const markerDiv = markers.getElement();
 
-    // const markerDiv = markers.getElement();
-
-    // markerDiv.addEventListener('mouseenter', () => markers.setPopup(popup));
-    // markerDiv.addEventListener('mouseleave', () => markers.setPopup(popup));
-    // });
-    //     console.log(region)
-    //  })
-    // }
+      // markerDiv.addEventListener('mouseenter', () => markers.setPopup(popup));
+      // markerDiv.addEventListener('mouseleave', () => markers.setPopup(popup));
+      // });
+      //     console.log(region)
+      //  })
+      // }
 
 
 
-    // map.on('load', () => {
-    //   map.addSource('mapbox-terrain', {
-    //     type: 'vector',
-    //     // Use any Mapbox-hosted tileset using its tileset id.
-    //     // Learn more about where to find a tileset id:
-    //     // https://docs.mapbox.com/help/glossary/tileset-id/
-    //     url: 'mapbox://mujisteph.2gqxq77o'
-    //   });
-    //   map.addLayer({
-    //     'id': 'mapbox-terrain',
-    //     'type': 'line',
-    //     'source': 'mapbox-terrain',
-    //     'source-layer': 'contour',
-    //     'layout': {
-    //       'line-join': 'round',
-    //       'line-cap': 'round'
-    //     },
-    //     'paint': {
-    //       'line-color': '#ff69b4',
-    //       'line-width': 1
-    //     }
-    //   });
-    // });
-    map.addControl(new mapboxgl.NavigationControl());
-  </script>
-  <script type="text/javascript" src="static/js/main.js"></script>
+      // map.on('load', () => {
+      //   map.addSource('mapbox-terrain', {
+      //     type: 'vector',
+      //     // Use any Mapbox-hosted tileset using its tileset id.
+      //     // Learn more about where to find a tileset id:
+      //     // https://docs.mapbox.com/help/glossary/tileset-id/
+      //     url: 'mapbox://mujisteph.2gqxq77o'
+      //   });
+      //   map.addLayer({
+      //     'id': 'mapbox-terrain',
+      //     'type': 'line',
+      //     'source': 'mapbox-terrain',
+      //     'source-layer': 'contour',
+      //     'layout': {
+      //       'line-join': 'round',
+      //       'line-cap': 'round'
+      //     },
+      //     'paint': {
+      //       'line-color': '#ff69b4',
+      //       'line-width': 1
+      //     }
+      //   });
+      // });
+      map.addControl(new mapboxgl.NavigationControl());
+    </script>
+    <script type="text/javascript" src="static/js/main.js"></script>
 
 </body>

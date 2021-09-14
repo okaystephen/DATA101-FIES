@@ -1,5 +1,7 @@
 $(document).ready(function () {
+
   $(".loader").hide()
+
   var data_select = $('#data_select')
 
   d3.json('/data').then(function (data) {
@@ -260,7 +262,6 @@ $(document).ready(function () {
 
     })
 
-
     var region_select = $('#region_select')
 
     d3.json('/regions').then(function (data) {
@@ -271,88 +272,35 @@ $(document).ready(function () {
     });
 
   })
-
-  // d3.json("/fies", function (error, data) {
-
-  //   if (error) {
-  //     return console.warn(error);
-  //   }
-
-  //   d3.select("#test")
-  //     .selectAll("p")
-  //     .data(data)
-  //     .enter()
-  //     .append("p")
-  //     .text(function (d) {
-  //       return d.name + ", " + d.location;
-  //     });
-  // });
-
-
-  // example of miss unisse during class for food consumption guide
-  // var width = 500;
-  // var height = 500;
-  // var padding = 60;
-
-  // var svg = d3.select("#chart").append("svg")
-  //   .attr("width", width)
-  //   .attr("height", height);
-
-  // var url = "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-18/food_consumption.csv";
-
-  // d3.json('/data').then(function (formatted_data) {
-  //   var categories = [...new Set(formatted_data.map(function (d) { return d.category; }))];
-
-  //   var colorScale = d3.scaleOrdinal(categories, d3.schemeSet3);
-
-  //   var xMax = d3.max(formatted_data, function (d) { return d.consumption; });
-
-  //   var yMax = d3.max(formatted_data, function (d) { return d.co2; });
-
-  //   var xScale = d3.scaleLinear([-10, xMax], [padding, width - padding]);
-
-  //   var yScale = d3.scaleLinear([-50, yMax], [height - padding, padding]);
-
-  //   var xAxis = d3.axisBottom(xScale);
-  //   var yAxis = d3.axisLeft(yScale);
-
-  //   svg.append("g")
-  //     .attr("transform", "translate(0, " + (height - padding) + ")")
-  //     .call(xAxis);
-
-  //   svg.append("g")
-  //     .attr("transform", "translate(" + padding + ", 0)")
-  //     .call(yAxis);
-
-  //   svg.append("text")
-  //     .attr("x", width / 2)
-  //     .attr("y", height - padding + 40)
-  //     .attr("text-anchor", "middle")
-  //     .text("Food Consumption (kg/person/year)")
-
-  //   svg.append("text")
-  //     .attr("x", -height / 2)
-  //     .attr("y", padding - 40)
-  //     .attr("transform", "rotate(-90)")
-  //     .attr("text-anchor", "middle")
-  //     .text("CO2 Emissions (Kg CO2/person/year)")
-
-  //   svg.selectAll("circle")
-  //     .data(formatted_data)
-  //     .join("circle")
-  //     .attr("cx", d => xScale(d.consumption))
-  //     .attr("cy", function (d) { return yScale(d.co2); })
-  //     .attr("r", 5)
-  //     .attr("opacity", 0.4)
-  //     .style("fill", function (d) { return colorScale(d.category); });
-
-  //   console.log(colorScale("Beef"))
-  // })
-
 });
 
 function sidebarChangeContent(data, region) {
   var data_var = data
+
+  var peso = ['Total Household Income',
+    'Region',
+    'Total Food Expenditure',
+    'Main Source of Income',
+    'Bread and Cereals Expenditure',
+    'Total Rice Expenditure',
+    'Meat Expenditure',
+    'Total Fish and Marine Products Expenditure',
+    'Fruit Expenditure',
+    'Vegetables Expenditure',
+    'Restaurant and Hotel Expenditure',
+    'Alcoholic Beverages Expenditure',
+    'Tobacco Expenditure',
+    'Clothing, Footwear and Other Wear Expenditure',
+    'Housing and Water Expenditure',
+    'Imputed House Rental Value',
+    'Medical Care Expenditure',
+    'Transportation Expenditure',
+    'Communication Expenditure',
+    'Education Expenditure',
+    'Miscellaneous Goods and Services Expenditure',
+    'Special Occasions Expenditure',
+    'Crop Farming and Gardening Expenditure',
+    'Total Income from Entrepreneurial Acitivites']
 
   // Clear sidebar content
   $('.sidebar-content').empty()
@@ -365,11 +313,24 @@ function sidebarChangeContent(data, region) {
         // Display information about region
         var val = elem[data_var];
         var r = val.toFixed(2);
+        var html = ""
+
+        html += `<p>The ${data} in ${region} has an average of <u>`
+
+        peso.forEach(function (p) { //loop through keys array
+          if (p === data) {
+            html += `₱`
+          }
+        });
+
+        html += `<span id="value">${r}</span></u></p>`
+
         $('.sidebar-content').append(`<h4><b>${data} — ${region}</b></h4>`)
-        $('.sidebar-content').append(`<p>The ${data} in ${region} has an average of <u>₱<span id="value">${r}</span></u></p>`)
+        // $('.sidebar-content').append(`<p>The ${data} in ${region} has an average of <u>₱<span id="value">${r}</span></u></p>`)
+        $('.sidebar-content').append(html)
 
         // Display ranking among other regions
-        $('.sidebar-content').append('<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5>')
+        $('.sidebar-content').append(`<div class="pt-2"><h5><b>Ranking Among Other Regions</b></h5>`)
         $('.sidebar-content').append(`<p>See how ${region} compares to other regions in the Philippines with regards to ${data}.</p></div>`)
         getRanking(region, data_var)
         animateMap(region, r, data_var)
@@ -382,7 +343,6 @@ function sidebarChangeContent(data, region) {
 
 function getRanking(r, data_var) {
   d3.json('/fies').then(function (loop) {
-    // <div id="bar"></div>
     var region = []
     var figure = []
 
@@ -403,6 +363,7 @@ function getRanking(r, data_var) {
     console.log(region)
     console.log(figure)
     $('.sidebar-content').append(`<div class="pb-3" id="bar"></div>`)
+    // $('.sidebar-content').append(`<div class="pb-3" id="bar"></div>`)
 
     // Create dictionary
     var dict = []
@@ -446,11 +407,6 @@ function getRanking(r, data_var) {
     var maxRatio = d3.max(figure);
     var regions = mapped.map(d => d.value);
 
-    console.log(mapped)
-    console.log(maxRatio)
-    console.log(regions)
-    console.log(mapped_figures)
-
     var xScale = d3.scaleLinear([0, maxRatio], [padding, w - padding_left]);
     var yScale = d3.scaleBand()
       .domain(regions)
@@ -461,6 +417,41 @@ function getRanking(r, data_var) {
 
     var xAxis = d3.axisBottom(xScale);
     var yAxis = d3.axisLeft(yScale);
+
+    // create tooltip element  
+    var tooltip = d3.select("body")
+      .append("div")
+      .attr("class", "d3-tooltip")
+      .style("position", "absolute")
+      .style("z-index", "10")
+      .style("visibility", "hidden")
+      .style("padding", "15px")
+      .style("background", "rgba(0,0,0,0.6)")
+      .style("border-radius", "5px")
+      .style("color", "#fff")
+      .text("a simple tooltip");
+
+    var bar_color = "#FFCB65";
+
+    function shadeColor(color, percent) {
+      var R = parseInt(color.substring(1, 3), 16);
+      var G = parseInt(color.substring(3, 5), 16);
+      var B = parseInt(color.substring(5, 7), 16);
+
+      R = parseInt(R * (100 + percent) / 100);
+      G = parseInt(G * (100 + percent) / 100);
+      B = parseInt(B * (100 + percent) / 100);
+
+      R = (R < 255) ? R : 255;
+      G = (G < 255) ? G : 255;
+      B = (B < 255) ? B : 255;
+
+      var RR = ((R.toString(16).length == 1) ? "0" + R.toString(16) : R.toString(16));
+      var GG = ((G.toString(16).length == 1) ? "0" + G.toString(16) : G.toString(16));
+      var BB = ((B.toString(16).length == 1) ? "0" + B.toString(16) : B.toString(16));
+
+      return "#" + RR + GG + BB;
+    }
 
     bar.append("g")
       .attr("transform", "translate(" + (padding_left - padding) + ", " + (h - padding) + ")")
@@ -495,7 +486,22 @@ function getRanking(r, data_var) {
             .attr("y", (d, i) => i * 29 + 55)
             .attr('width', d => xScale(d.value) - padding)
             .attr('height', d => yScale.bandwidth())
-            .style("fill", d => colorScale(d.value));
+            .attr('title', d => d.value)
+            .style("fill", d => colorScale(d.value))
+            .on("mouseover", function (d, i) {
+              tooltip.html(`Value: ${$(this).attr("title")}`).style("visibility", "visible");
+              d3.select(this)
+                .attr("fill", shadeColor(bar_color, -15));
+            })
+            .on("mousemove", function () {
+              tooltip
+                .style("top", (event.pageY - 10) + "px")
+                .style("left", (event.pageX + 10) + "px");
+            })
+            .on("mouseout", function () {
+              tooltip.html(``).style("visibility", "hidden");
+              d3.select(this).attr("fill", bar_color);
+            });
         }
       )
 
@@ -929,33 +935,3 @@ function hideField() {
     $(".sidebar-top").show()
   }
 }
-
-// Bar chart
-// data = d3.csv("https://raw.githubusercontent.com/dlsudatasci/data-visualization/main/ched_sucfacultystudentratio_20162018.csv")
-//   .then(makeChart);
-
-// function makeChart(data) {
-//   var students = data.map(function (d) { return d.students2017; });
-//   var region = data.map(function (d) { return d.region; });
-
-//   new Chart(document.getElementById("myCanvas"), {
-//     type: 'bar',
-//     data: {
-//       labels: region,
-//       datasets: [
-//         {
-//           backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-//           data: students
-//         }
-//       ]
-//     },
-//     options: {
-//       legend: { display: false },
-//       title: {
-//         display: true,
-//         text: 'Graph'
-//       }
-//     }
-//   });
-// }
-

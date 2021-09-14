@@ -37,7 +37,7 @@ def get_regions():
 @app.route('/data')
 def get_data():
     df = pd.read_csv(data_url)
-    df = df.iloc[:, [0,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,33,34,35,47,50,51,54,55,56]]          # get only needed columns
+    df = df.iloc[:, [0,2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,33,34,35,47,50,51,54,55,56]]          # get only needed columns
 
     # clean column names
     df.rename(columns= {'Crop Farming and Gardening expenses': 'Crop Farming and Gardening Expenditure', 
