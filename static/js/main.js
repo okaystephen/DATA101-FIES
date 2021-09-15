@@ -520,7 +520,7 @@ function getRanking(r, data_var) {
       )
 
     // Change color of bar based on selected region
-    $(`rect[region='${r}']`).css("fill", 'blue');
+    $(`rect[region='${r}']`).css("fill", '#a62b2b');
 
     $("text").filter(function () {
       return $(this).text() === r;
