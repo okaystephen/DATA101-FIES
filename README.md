@@ -1,5 +1,11 @@
 # Family Income and Expenditure Survey Data Visualization
 
+### TO-DO for Final Report:
+- Fix README file
+- Implement choropleth map
+- Fix the values on bar chart tooltip (limit to two decimals)
+- Change the color of the bar based on the selected region 
+
 ### Heroku
 The web application can now be accessed via [Heroku](http://data101-fies.herokuapp.com/)
 
