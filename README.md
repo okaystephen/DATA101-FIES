@@ -3,7 +3,7 @@
 ### TO-DO for Final Report:
 - Fix README file
 - Implement choropleth map
-- Fix the values on bar chart tooltip (limit to two decimals)
+- ☑️ Fix the values on bar chart tooltip (limit to two decimals)
 - Change the color of the bar based on the selected region 
 
 ### Heroku
