@@ -404,6 +404,19 @@ function getRanking(r, data_var) {
       }
     });
 
+    console.log(mapped_figures)
+
+    var mapped_overall = dict.map(d => {
+      return {
+        region: Object.keys(d)[0],
+        figure: Object.keys(d)[1],
+        value_region: d[Object.keys(d)[0]],
+        value_figure: d[Object.keys(d)[1]],
+      }
+    });
+
+    console.log(mapped_overall)
+
     var maxRatio = d3.max(figure);
     var regions = mapped.map(d => d.value);
 
@@ -478,16 +491,17 @@ function getRanking(r, data_var) {
       .text(data_var);
 
     bar.selectAll("rect")
-      .data(mapped_figures)
+      .data(mapped_overall)
       .join(
         function (enter) {
           enter.append("rect")
             .attr("x", padding_left)
             .attr("y", (d, i) => i * 29 + 55)
-            .attr('width', d => xScale(d.value) - padding)
+            .attr('width', d => xScale(d.value_figure) - padding)
             .attr('height', d => yScale.bandwidth())
-            .attr('title', d => d.value.toFixed(2))
-            .style("fill", d => colorScale(d.value))
+            .attr('title', d => d.value_figure.toFixed(2))
+            .attr('region', d => d.value_region)
+            .style("fill", d => colorScale(d.value_figure))
             .on("mouseover", function (d, i) {
               tooltip.html(`Value: ${$(this).attr("title")}`).style("visibility", "visible");
               d3.select(this)
@@ -505,9 +519,8 @@ function getRanking(r, data_var) {
         }
       )
 
-    // $(`text:contains(${r})`).css({
-    //   'font-weight': 'bold'
-    // });
+    // Change color of bar based on selected region
+    $(`rect[region='${r}']`).css("fill", 'blue');
 
     $("text").filter(function () {
       return $(this).text() === r;
