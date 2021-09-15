@@ -486,7 +486,7 @@ function getRanking(r, data_var) {
             .attr("y", (d, i) => i * 29 + 55)
             .attr('width', d => xScale(d.value) - padding)
             .attr('height', d => yScale.bandwidth())
-            .attr('title', d => d.value)
+            .attr('title', d => d.value.toFixed(2))
             .style("fill", d => colorScale(d.value))
             .on("mouseover", function (d, i) {
               tooltip.html(`Value: ${$(this).attr("title")}`).style("visibility", "visible");
