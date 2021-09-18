@@ -1,5 +1,6 @@
 from flask import Flask, Response, jsonify, render_template
 import pandas as pd
+import geopandas as gpd
 import json 
 import os
 
@@ -88,36 +89,59 @@ def get_fies():
 
     return Response(data_json, mimetype="application/json")
 
-# @app.route('/countries')
-# def get_countries():
-#     # TODO: Get the countries and return as a list or JSON to the JS file
-#     df = pd.read_csv(data_url)
-#     df.columns = ['country', 'category', 'consumption', 'co2']
-#     countries = sorted(list(df.country.unique()))
+# 
+@app.route('/geojson_data')
+def get_geojson_data():
+    df = pd.read_csv(data_url)
+        
+    df = df.iloc[:, [0,1,2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,33,34,35,47,50,51,54,55,56]] 
 
-#     country_dict = pd.DataFrame(list(zip(countries, countries)), columns=[
-#                                 'value', 'label']).to_json(orient="records")
-#     return Response(country_dict, mimetype="application/json")
+    df.replace({'Region' : {'I - Ilocos Region': 'Region I', 'II - Cagayan Valley': 'Region II', 
+                'III - Central Luzon' : 'Region III', 'IVA - CALABARZON': 'Region IVA',
+                'IVB - MIMAROPA':'Region IVB','V - Bicol Region':'Region V', 
+                'VI - Western Visayas':'Region VI','VII - Central Visayas': 'Region VII', 
+                'VIII - Eastern Visayas': 'Region VIII', 'IX - Zasmboanga Peninsula': 'Region IX',
+                'X - Northern Mindanao': 'Region X', 'XI - Davao Region': 'Region XI',
+                'XII - SOCCSKSARGEN': 'Region XII', 'Caraga': 'Region XIII', ' ARMM': 'ARMM'}}, inplace=True)
 
+    df.rename(columns= {'Crop Farming and Gardening expenses': 'Crop Farming and Gardening Expenditure', 
+            'Housing and water Expenditure': 'Housing and Water Expenditure',
+            'Restaurant and hotels Expenditure': 'Restaurant and Hotel Expenditure',
+            'Total Fish and  marine products Expenditure': 'Total Fish and Marine Products Expenditure',
+            'Members with age less than 5 year old': 'Members with Age less than 5 years old',
+            'Members with age 5 - 17 years old': 'Members with Age 5-17 years old',
+            'Total Number of Family members': 'Total Number of Family Members',
+            'Number of Cellular phone': 'Number of Cellular Phone'}, inplace=True)
 
-# @app.route('/data')
-# def get_data():
-#     data = pd.read_csv(data_url)
-#     data.columns = ['country', 'category', 'consumption', 'co2']
+    df_groupby = df.groupby(by=["Region"]).mean().reset_index()
 
-#     data_json = data.to_json(orient="records")
-#     return Response(data_json, mimetype="application/json")
+    # Read GeoJSON file
+    regions = gpd.read_file('https://raw.githubusercontent.com/okaystephen/DATA101-FIES/main/data/regions.geojson', driver='GeoJSON')
 
+    ctr_df_groupby = 0
+    ctr_regions = 0
 
-# @app.route('/data/<country>')
-# def get_country_data(country):
-#     # TODO: Get the data filtered by the provided country in the argument
-#     df = pd.read_csv(data_url)
-#     df.columns = ['country', 'category', 'consumption', 'co2']
+    for x in list(df_groupby.columns):
+        if (x == 'Region'):
+            continue
+        
+        regions[x] = 0
+        for y in list(df_groupby['Region']):
+            #regions[x] = 0
+            if (regions['ADM1_EN'].iloc[ctr_regions] == 'Negros Island Region'):
+                ctr_regions += 1
+                
+            regions[x].iloc[ctr_regions] = df_groupby[x].iloc[ctr_df_groupby]
+            ctr_df_groupby += 1
+            ctr_regions += 1
+                
+        ctr_df_groupby = 0
+        ctr_regions = 0
 
-#     filtered_df = df[df['country'] == country].to_json(orient='records')
-#     return Response(filtered_df, mimetype="application/json")
+    regions_geojson = regions.to_json()
 
+    return Response(regions_geojson, mimetype="application/json")
+    # return regions_geojson
 
 # STATIC PAGES
 @app.route('/')

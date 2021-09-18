@@ -11,268 +11,407 @@ $(document).ready(function () {
     });
   });
 
-  $.getJSON('https://raw.githubusercontent.com/okaystephen/DATA101-FIES/main/data/regions.geojson', function (data) {
+  // color = '#024164' // blue
+  color = '#a62b2b' // red
 
-    // color = '#024164' // blue
-    color = '#a62b2b' // red
+  // Choropleth sample
+  // https://ovrdc.github.io/gis-tutorials/mapbox/05-2-choropleth/#6.82/39.191/-76.588/-107.5/59
+  map.on('load', () => {
+    map.addSource('regions', {
+      type: 'geojson',
+      // data: 'https://raw.githubusercontent.com/okaystephen/DATA101-FIES/main/data/regions.geojson',
+      data: '/geojson_data'
+    });
 
-    map.on('load', () => {
-      map.addSource('regions', {
-        type: 'geojson',
-        data: data,
-      });
+    var data_list = ['Total Household Income',
+      'Total Food Expenditure',
+      'Bread and Cereals Expenditure',
+      'Total Rice Expenditure',
+      'Meat Expenditure',
+      'Total Fish and Marine Products Expenditure',
+      'Fruit Expenditure',
+      'Vegetables Expenditure',
+      'Restaurant and Hotel Expenditure',
+      'Alcoholic Beverages Expenditure',
+      'Tobacco Expenditure',
+      'Clothing, Footwear and Other Wear Expenditure',
+      'Housing and Water Expenditure',
+      'Imputed House Rental Value',
+      'Medical Care Expenditure',
+      'Transportation Expenditure',
+      'Communication Expenditure',
+      'Education Expenditure',
+      'Miscellaneous Goods and Services Expenditure',
+      'Special Occasions Expenditure',
+      'Crop Farming and Gardening Expenditure',
+      'Total Income from Entrepreneurial Acitivites',
+      'Total Number of Family Members',
+      'Members with Age less than 5 years old',
+      'Members with Age 5-17 years old',
+      'Number of Television',
+      'Number of Refrigerator/Freezer',
+      'Number of Washing Machine',
+      'Number of Landline/wireless telephones',
+      'Number of Cellular Phone',
+      'Number of Personal Computer']
 
+    data_list.forEach(function (item, index) {
       map.addLayer({
-        'id': 'ARMM',
+        'id': `${item}`,
         'type': 'fill',
         'source': 'regions',
         'layout': {
           'visibility': 'none'
         },
         'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Autonomous Region in Muslim Mindanao']
-      });
-
-      map.addLayer({
-        'id': 'CAR',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Cordillera Administrative Region']
-      });
-
-      map.addLayer({
-        'id': 'NCR',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'National Capital Region']
-      });
-
-      map.addLayer({
-        'id': 'Region I',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region I']
-      });
-
-      map.addLayer({
-        'id': 'Region II',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region II']
-      });
-
-      map.addLayer({
-        'id': 'Region III',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region III']
-      });
-
-      map.addLayer({
-        'id': 'Region IVA',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region IV-A']
-      });
-
-      map.addLayer({
-        'id': 'Region IVB',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region IV-B']
-      });
-
-      map.addLayer({
-        'id': 'Region V',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region V']
-      });
-
-      map.addLayer({
-        'id': 'Region VI',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region VI']
-      });
-
-      map.addLayer({
-        'id': 'Region VII',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region VII']
-      });
-
-      map.addLayer({
-        'id': 'Region VIII',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region VIII']
-      });
-
-      map.addLayer({
-        'id': 'Region IX',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region IX']
-      });
-
-      map.addLayer({
-        'id': 'Region X',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region X']
-      });
-
-      map.addLayer({
-        'id': 'Region XI',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region XI']
-      });
-
-      map.addLayer({
-        'id': 'Region XII',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region XII']
-      });
-
-      map.addLayer({
-        'id': 'Region XIII',
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': color,
-          'fill-opacity': 0.61
-        },
-        'filter': ['==', 'ADM1_EN', 'Region XIII']
-      });
-
-    })
-
-    var region_select = $('#region_select')
-
-    d3.json('/regions').then(function (data) {
-      console.log(data)
-      data.forEach(function (elem) {
-        region_select.append(`<option value="${elem.value}">${elem.label}</option>`);
+          'fill-color': {
+            'property': `${item}`,
+            'stops': [
+              [1, '#c1f7d1'],
+              [3000, '#59ba76'],
+              [6000, '#004420']
+            ]
+          },
+          'fill-outline-color': 'white',
+          'fill-opacity': 0.9
+        }
       });
     });
 
+    /* this would be different for mapbox styles*/
+
+    // map.addLayer({
+    //   'id': 'popsqmi',
+    //   'type': 'fill-extrusion',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'visible'
+    //   },
+    //   'paint': {
+    //     'fill-extrusion-color': {
+    //       'property': 'Clothing, Footwear and Other Wear Expenditure',
+    //       'stops': [
+    //         [1, '#c1f7d1'],
+    //         [3000, '#59ba76'],
+    //         [6000, '#004420']
+    //       ]
+    //     },
+    //     'fill-extrusion-height': {
+    //       "property": 'Clothing, Footwear and Other Wear Expenditure',
+    //       "stops": [
+    //         [1, 0],
+    //         [3000, 1000],
+    //         [6000, 10000]
+    //       ]
+    //     },
+    //     'fill-extrusion-opacity': 0.9,
+    //     'fill-extrusion-base': 0
+    //   }
+    // });  
+
+    // var ex = document.getElementById('extrude');
+    // ex.addEventListener('click', function () {
+    //   if ((map.getLayoutProperty('countiesLayer', 'visibility')) === 'visible') {
+    //     map.setLayoutProperty('popsqmi', 'visibility', 'visible');
+    //     ex.className = 'mapboxgl-ctrl-group active';
+    //     setTimeout(function () {
+    //       // map.flyTo(view2);
+    //       map.setLayoutProperty('countiesLayer', 'visibility', 'none');
+    //     }, 2000);
+    //   } else {
+    //     map.setLayoutProperty('countiesLayer', 'visibility', 'visible');
+    //     map.setLayoutProperty('popsqmi', 'visibility', 'none');
+    //     ex.className = 'mapboxgl-ctrl-group';
+    //     // map.flyTo(view1);
+    //   }
+    // });
+
+    // map.addLayer({
+    //   'id': 'ARMM',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Autonomous Region in Muslim Mindanao']
+    // });
+
+    // map.addLayer({
+    //   'id': 'CAR',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Cordillera Administrative Region']
+    // });
+
+    // map.addLayer({
+    //   'id': 'NCR',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'National Capital Region']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region I',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region I']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region II',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region II']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region III',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region III']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region IVA',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region IV-A']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region IVB',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region IV-B']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region V',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region V']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region VI',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region VI']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region VII',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region VII']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region VIII',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region VIII']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region IX',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region IX']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region X',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region X']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region XI',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region XI']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region XII',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region XII']
+    // });
+
+    // map.addLayer({
+    //   'id': 'Region XIII',
+    //   'type': 'fill',
+    //   'source': 'regions',
+    //   'layout': {
+    //     'visibility': 'none'
+    //   },
+    //   'paint': {
+    //     'fill-color': color,
+    //     'fill-opacity': 0.61
+    //   },
+    //   'filter': ['==', 'ADM1_EN', 'Region XIII']
+    // });
   })
-});
+
+
+
+  var region_select = $('#region_select')
+
+  d3.json('/regions').then(function (data) {
+    console.log(data)
+    data.forEach(function (elem) {
+      region_select.append(`<option value="${elem.value}">${elem.label}</option>`);
+    });
+  });
+
+})
+
+function return_datalist() {
+  var data_list = ['Total Household Income',
+    'Total Food Expenditure',
+    'Bread and Cereals Expenditure',
+    'Total Rice Expenditure',
+    'Meat Expenditure',
+    'Total Fish and Marine Products Expenditure',
+    'Fruit Expenditure',
+    'Vegetables Expenditure',
+    'Restaurant and Hotel Expenditure',
+    'Alcoholic Beverages Expenditure',
+    'Tobacco Expenditure',
+    'Clothing, Footwear and Other Wear Expenditure',
+    'Housing and Water Expenditure',
+    'Imputed House Rental Value',
+    'Medical Care Expenditure',
+    'Transportation Expenditure',
+    'Communication Expenditure',
+    'Education Expenditure',
+    'Miscellaneous Goods and Services Expenditure',
+    'Special Occasions Expenditure',
+    'Crop Farming and Gardening Expenditure',
+    'Total Income from Entrepreneurial Acitivites',
+    'Total Number of Family Members',
+    'Members with Age less than 5 years old',
+    'Members with Age 5-17 years old',
+    'Number of Television',
+    'Number of Refrigerator/Freezer',
+    'Number of Washing Machine',
+    'Number of Landline/wireless telephones',
+    'Number of Cellular Phone',
+    'Number of Personal Computer']
+  return data_list
+}
 
 function sidebarChangeContent(data, region) {
   var data_var = data
@@ -555,6 +694,15 @@ function animateMap(region, value, type) {
   var toggableID = ['ARMM', 'CAR', 'NCR', 'Region I', 'Region II', 'Region III',
     'Region IVA', 'Region IVB', 'Region IX', 'Region V', 'Region VI',
     'Region VII', 'Region VIII', 'Region X', 'Region XI', 'Region XII', 'Region XIII']
+
+  var data_list = return_datalist()
+
+  // Disable all layer visibility first
+  data_list.forEach(function (item, index) {
+    map.setLayoutProperty(item, 'visibility', 'none');
+  });
+
+  map.setLayoutProperty(type, 'visibility', 'visible');
 
   // Animate the map
   if (region == "ARMM") {
@@ -872,20 +1020,20 @@ function animateMap(region, value, type) {
     popup.remove();
   })
 
-  for (var i = 0; i < toggableID.length; i++) {
+  // for (var i = 0; i < toggableID.length; i++) {
 
-    if (document.getElementById(toggableID[i]) == null) {
-      map.setLayoutProperty(toggableID[i], 'visibility', 'none');
-      continue
-    }
-    else if (toggableID[i] === region) {
-      document.getElementById(toggableID[i]).style.display = "block"
-      map.setLayoutProperty(toggableID[i], 'visibility', 'visible');
-    } else {
-      map.setLayoutProperty(toggableID[i], 'visibility', 'none');
-      document.getElementById(toggableID[i]).style.display = "none"
-    }
-  }
+  //   if (document.getElementById(toggableID[i]) == null) {
+  //     map.setLayoutProperty(toggableID[i], 'visibility', 'none');
+  //     continue
+  //   }
+  //   else if (toggableID[i] === region) {
+  //     document.getElementById(toggableID[i]).style.display = "block"
+  //     map.setLayoutProperty(toggableID[i], 'visibility', 'visible');
+  //   } else {
+  //     map.setLayoutProperty(toggableID[i], 'visibility', 'none');
+  //     document.getElementById(toggableID[i]).style.display = "none"
+  //   }
+  // }
 }
 
 function shadeRegion(region) {
