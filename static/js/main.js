@@ -48,7 +48,7 @@ $(document).ready(function () {
             'fill-color': {
               'property': `${item}`,
               'stops': [
-                [1, '#c1f7d1'],
+                [0, '#c1f7d1'],
                 // [3000, '#59ba76'],
                 [d3.max(figure), '#004420']
               ]
