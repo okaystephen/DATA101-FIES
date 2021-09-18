@@ -5,13 +5,11 @@ $(document).ready(function () {
   var data_select = $('#data_select')
 
   d3.json('/data').then(function (data) {
-    console.log(data)
     data.forEach(function (elem) {
       data_select.append(`<option value="${elem.value}">${elem.label}</option>`);
     });
   });
 
-  // color = '#024164' // blue
   color = '#a62b2b' // red
 
   // Choropleth sample
@@ -23,60 +21,70 @@ $(document).ready(function () {
       data: '/geojson_data'
     });
 
-    var data_list = ['Total Household Income',
-      'Total Food Expenditure',
-      'Bread and Cereals Expenditure',
-      'Total Rice Expenditure',
-      'Meat Expenditure',
-      'Total Fish and Marine Products Expenditure',
-      'Fruit Expenditure',
-      'Vegetables Expenditure',
-      'Restaurant and Hotel Expenditure',
-      'Alcoholic Beverages Expenditure',
-      'Tobacco Expenditure',
-      'Clothing, Footwear and Other Wear Expenditure',
-      'Housing and Water Expenditure',
-      'Imputed House Rental Value',
-      'Medical Care Expenditure',
-      'Transportation Expenditure',
-      'Communication Expenditure',
-      'Education Expenditure',
-      'Miscellaneous Goods and Services Expenditure',
-      'Special Occasions Expenditure',
-      'Crop Farming and Gardening Expenditure',
-      'Total Income from Entrepreneurial Acitivites',
-      'Total Number of Family Members',
-      'Members with Age less than 5 years old',
-      'Members with Age 5-17 years old',
-      'Number of Television',
-      'Number of Refrigerator/Freezer',
-      'Number of Washing Machine',
-      'Number of Landline/wireless telephones',
-      'Number of Cellular Phone',
-      'Number of Personal Computer']
+    d3.json('/fies').then(function (data) {
+      var figure = []
+      var data_list = return_datalist()
 
-    data_list.forEach(function (item, index) {
-      map.addLayer({
-        'id': `${item}`,
-        'type': 'fill',
-        'source': 'regions',
-        'layout': {
-          'visibility': 'none'
-        },
-        'paint': {
-          'fill-color': {
-            'property': `${item}`,
-            'stops': [
-              [1, '#c1f7d1'],
-              [3000, '#59ba76'],
-              [6000, '#004420']
-            ]
+      data_list.forEach(function (item, index) {
+        data.forEach(function (elem) {
+          var keys = Object.keys(elem);
+          keys.forEach(function (key) { //loop through keys array
+            if (key == item) {
+              figure.push(elem[item])
+            }
+          });
+        });
+
+        console.log(d3.max(figure))
+
+        map.addLayer({
+          'id': `${item}`,
+          'type': 'fill',
+          'source': 'regions',
+          'layout': {
+            'visibility': 'none'
           },
-          'fill-outline-color': 'white',
-          'fill-opacity': 0.9
-        }
+          'paint': {
+            'fill-color': {
+              'property': `${item}`,
+              'stops': [
+                [1, '#c1f7d1'],
+                // [3000, '#59ba76'],
+                [d3.max(figure), '#004420']
+              ]
+            },
+            'fill-outline-color': 'white',
+            'fill-opacity': 0.9
+          }
+        });
+
+        figure = []
       });
     });
+
+    // var data_list = return_datalist()
+    // data_list.forEach(function (item, index) {
+    //   map.addLayer({
+    //     'id': `${item}`,
+    //     'type': 'fill',
+    //     'source': 'regions',
+    //     'layout': {
+    //       'visibility': 'none'
+    //     },
+    //     'paint': {
+    //       'fill-color': {
+    //         'property': `${item}`,
+    //         'stops': [
+    //           [1, '#c1f7d1'],
+    //           // [3000, '#59ba76'],
+    //           [20000, '#004420']
+    //         ]
+    //       },
+    //       'fill-outline-color': 'white',
+    //       'fill-opacity': 0.9
+    //     }
+    //   });
+    // });
 
     /* this would be different for mapbox styles*/
 
@@ -365,8 +373,6 @@ $(document).ready(function () {
     // });
   })
 
-
-
   var region_select = $('#region_select')
 
   d3.json('/regions').then(function (data) {
@@ -484,7 +490,6 @@ function getRanking(r, data_var) {
   d3.json('/fies').then(function (loop) {
     var region = []
     var figure = []
-
 
     loop.forEach(function (elem) {
       var keys = Object.keys(elem);
@@ -1010,6 +1015,7 @@ function animateMap(region, value, type) {
       essential: true
     });
   }
+
   markers.getElement().addEventListener('mouseenter', () => {
     map.getCanvas().style.cursor = 'pointer';
     markers.setPopup(popup);
