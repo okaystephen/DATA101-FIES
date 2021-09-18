@@ -49,7 +49,6 @@ $(document).ready(function () {
               'property': `${item}`,
               'stops': [
                 [0, '#c1f7d1'],
-                // [3000, '#59ba76'],
                 [d3.max(figure), '#004420']
               ]
             },
