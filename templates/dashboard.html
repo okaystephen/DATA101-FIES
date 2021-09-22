@@ -89,8 +89,8 @@
       <div class="col-8 dashboard-map bg-white">
         <div class="choropleth-loader text-center sticky-top">
           <div class="wrap">
-            <span class="spinner-grow text-success" role="status"></span>
-            <h4>Loading choropleth map...</h4>
+            <span class="spinner-grow spinner-grow-sm text-success" role="status"></span>
+            <p>Loading choropleth map...</p>
           </div>
         </div>
         <div id='map' class='map-container'></div>
@@ -98,7 +98,9 @@
     </div>
 
     <script type="text/javascript">
-      mapboxgl.accessToken = "{{mapbox_token}}";
+      // mapboxgl.accessToken = "{{mapbox_token}}";
+      mapboxgl.accessToken = "pk.eyJ1IjoiaXJhdmlsbGFudWV2YSIsImEiOiJja3RoMmg0dXYwbzFzMnVudWI2NnV5aHBvIn0.YTSYOwzE_EKjd-oT4CqDTA";
+
 
       // Set bounds to Philippines.
       const bounds = [

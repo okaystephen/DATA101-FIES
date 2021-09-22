@@ -35,7 +35,7 @@ $(document).ready(function () {
           });
         });
 
-        console.log(d3.max(figure))
+        // console.log(d3.max(figure))
 
         map.addLayer({
           'id': `${item}`,
@@ -52,7 +52,7 @@ $(document).ready(function () {
                 [d3.max(figure), '#004420']
               ]
             },
-            'fill-outline-color': 'white',
+            'fill-outline-color': 'black',
             'fill-opacity': 0.9
           }
         });
@@ -67,7 +67,7 @@ $(document).ready(function () {
   var region_select = $('#region_select')
 
   d3.json('/regions').then(function (data) {
-    console.log(data)
+    // console.log(data)
     data.forEach(function (elem) {
       region_select.append(`<option value="${elem.value}">${elem.label}</option>`);
     });
@@ -183,7 +183,7 @@ function getRanking(r, data_var) {
 
     loop.forEach(function (elem) {
       var keys = Object.keys(elem);
-      console.log(keys)
+      // console.log(keys)
 
       keys.forEach(function (key) { //loop through keys array
         if (key == data_var) {
@@ -193,8 +193,8 @@ function getRanking(r, data_var) {
       });
     });
 
-    console.log(region)
-    console.log(figure)
+    // console.log(region)
+    // console.log(figure)
     $('.sidebar-content').append(`<div class="pb-3" id="bar"></div>`)
 
     // Create dictionary
@@ -210,7 +210,7 @@ function getRanking(r, data_var) {
       return b.value - a.value;
     });
 
-    console.log(dict)
+    // console.log(dict)
 
     // Make bar chart
     var w = 420;
@@ -236,7 +236,7 @@ function getRanking(r, data_var) {
       }
     });
 
-    console.log(mapped_figures)
+    // console.log(mapped_figures)
 
     var mapped_overall = dict.map(d => {
       return {
@@ -247,7 +247,7 @@ function getRanking(r, data_var) {
       }
     });
 
-    console.log(mapped_overall)
+    // console.log(mapped_overall)
 
     var maxRatio = d3.max(figure);
     var regions = mapped.map(d => d.value);
