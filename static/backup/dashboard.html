@@ -38,7 +38,51 @@
 </head>
 
 <body>
-  <ul class="vertical-navbar">
+  <div class="container-fluid h-100">
+    <div class="row">
+      <!-- Dashboard -->
+      <div class="col-4 dashboard">
+        <!-- Sidebar Bottom -->
+        <div class="pt-4 pb-3 px-2 sticky-top bg-white">
+          <a href="/">
+            <p style="font-size: small;"><i class="fas fa-arrow-left"></i> Back to Home</p>
+          </a>
+
+          <h3><b>Family Income and Expenditure Survey</b></h3>
+
+          <p class="pt-2" style="font-weight: 500;">Region</p>
+          <select class="form-select" id="region_select" name="region_select" onchange="regionChange()">
+            <option value="">Select a Region</option>
+          </select>
+
+          <p class="pt-2" style="font-weight: 500;">Data</p>
+          <select class="form-select" id="data_select" name="data_select" onchange="dataChange()">
+            <option value="">Select a Data</option>
+          </select>
+
+          <hr class='w-100' style="color: #64BB6A;" />
+        </div>
+
+        <!-- Sidebar Bottom -->
+        <div class="overflow-auto sidebar-content pb-4 px-2">
+          <h4><b>Hello!</b></h4>
+          <p>Select a region and type of data in order to get started.</p>
+
+          <canvas id="myChart" width="400" height="400"></canvas>
+
+        </div>
+
+      </div>
+
+      <!-- Map -->
+      <div class="col-8 dashboard-map bg-white">
+        <div id='map' class='map-container'></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <ul class="vertical-navbar">
     <a href="/">
       <p>Family Income and Expenditure Survey</p>
     </a>
@@ -59,9 +103,10 @@
 
     <hr />
 
-  </ul>
+  </ul> -->
 
-  <div id='map' class='map-container'></div>
+  <!-- <div id='map' class='map-container'></div> -->
+
   <script src="static/js/map.js"></script>
 
 </body>

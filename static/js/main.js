@@ -59,317 +59,9 @@ $(document).ready(function () {
 
         figure = []
       });
+
+      $(".choropleth-loader").hide()
     });
-
-    // var data_list = return_datalist()
-    // data_list.forEach(function (item, index) {
-    //   map.addLayer({
-    //     'id': `${item}`,
-    //     'type': 'fill',
-    //     'source': 'regions',
-    //     'layout': {
-    //       'visibility': 'none'
-    //     },
-    //     'paint': {
-    //       'fill-color': {
-    //         'property': `${item}`,
-    //         'stops': [
-    //           [1, '#c1f7d1'],
-    //           // [3000, '#59ba76'],
-    //           [20000, '#004420']
-    //         ]
-    //       },
-    //       'fill-outline-color': 'white',
-    //       'fill-opacity': 0.9
-    //     }
-    //   });
-    // });
-
-    /* this would be different for mapbox styles*/
-
-    // map.addLayer({
-    //   'id': 'popsqmi',
-    //   'type': 'fill-extrusion',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'visible'
-    //   },
-    //   'paint': {
-    //     'fill-extrusion-color': {
-    //       'property': 'Clothing, Footwear and Other Wear Expenditure',
-    //       'stops': [
-    //         [1, '#c1f7d1'],
-    //         [3000, '#59ba76'],
-    //         [6000, '#004420']
-    //       ]
-    //     },
-    //     'fill-extrusion-height': {
-    //       "property": 'Clothing, Footwear and Other Wear Expenditure',
-    //       "stops": [
-    //         [1, 0],
-    //         [3000, 1000],
-    //         [6000, 10000]
-    //       ]
-    //     },
-    //     'fill-extrusion-opacity': 0.9,
-    //     'fill-extrusion-base': 0
-    //   }
-    // });  
-
-    // var ex = document.getElementById('extrude');
-    // ex.addEventListener('click', function () {
-    //   if ((map.getLayoutProperty('countiesLayer', 'visibility')) === 'visible') {
-    //     map.setLayoutProperty('popsqmi', 'visibility', 'visible');
-    //     ex.className = 'mapboxgl-ctrl-group active';
-    //     setTimeout(function () {
-    //       // map.flyTo(view2);
-    //       map.setLayoutProperty('countiesLayer', 'visibility', 'none');
-    //     }, 2000);
-    //   } else {
-    //     map.setLayoutProperty('countiesLayer', 'visibility', 'visible');
-    //     map.setLayoutProperty('popsqmi', 'visibility', 'none');
-    //     ex.className = 'mapboxgl-ctrl-group';
-    //     // map.flyTo(view1);
-    //   }
-    // });
-
-    // map.addLayer({
-    //   'id': 'ARMM',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Autonomous Region in Muslim Mindanao']
-    // });
-
-    // map.addLayer({
-    //   'id': 'CAR',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Cordillera Administrative Region']
-    // });
-
-    // map.addLayer({
-    //   'id': 'NCR',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'National Capital Region']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region I',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region I']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region II',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region II']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region III',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region III']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region IVA',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region IV-A']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region IVB',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region IV-B']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region V',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region V']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region VI',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region VI']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region VII',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region VII']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region VIII',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region VIII']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region IX',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region IX']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region X',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region X']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region XI',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region XI']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region XII',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region XII']
-    // });
-
-    // map.addLayer({
-    //   'id': 'Region XIII',
-    //   'type': 'fill',
-    //   'source': 'regions',
-    //   'layout': {
-    //     'visibility': 'none'
-    //   },
-    //   'paint': {
-    //     'fill-color': color,
-    //     'fill-opacity': 0.61
-    //   },
-    //   'filter': ['==', 'ADM1_EN', 'Region XIII']
-    // });
   })
 
   var region_select = $('#region_select')
@@ -461,7 +153,7 @@ function sidebarChangeContent(data, region) {
 
         html += `<p>The ${data} in ${region} has an average of <u>`
 
-        peso.forEach(function (p) { //loop through keys array
+        peso.forEach(function (p) { // Loop through keys array
           if (p === data) {
             html += `₱`
           }
@@ -470,7 +162,6 @@ function sidebarChangeContent(data, region) {
         html += `<span id="value">${r}</span></u></p>`
 
         $('.sidebar-content').append(`<h4><b>${data} — ${region}</b></h4>`)
-        // $('.sidebar-content').append(`<p>The ${data} in ${region} has an average of <u>₱<span id="value">${r}</span></u></p>`)
         $('.sidebar-content').append(html)
 
         // Display ranking among other regions
@@ -496,7 +187,6 @@ function getRanking(r, data_var) {
 
       keys.forEach(function (key) { //loop through keys array
         if (key == data_var) {
-          // $('.sidebar-content').append(`<p>${elem['Region']} - ${elem[data_var]}</p>`)
           region.push(elem['Region'])
           figure.push(elem[data_var])
         }
@@ -506,7 +196,6 @@ function getRanking(r, data_var) {
     console.log(region)
     console.log(figure)
     $('.sidebar-content').append(`<div class="pb-3" id="bar"></div>`)
-    // $('.sidebar-content').append(`<div class="pb-3" id="bar"></div>`)
 
     // Create dictionary
     var dict = []
@@ -1024,21 +713,6 @@ function animateMap(region, value, type) {
     map.getCanvas().style.cursor = '';
     popup.remove();
   })
-
-  // for (var i = 0; i < toggableID.length; i++) {
-
-  //   if (document.getElementById(toggableID[i]) == null) {
-  //     map.setLayoutProperty(toggableID[i], 'visibility', 'none');
-  //     continue
-  //   }
-  //   else if (toggableID[i] === region) {
-  //     document.getElementById(toggableID[i]).style.display = "block"
-  //     map.setLayoutProperty(toggableID[i], 'visibility', 'visible');
-  //   } else {
-  //     map.setLayoutProperty(toggableID[i], 'visibility', 'none');
-  //     document.getElementById(toggableID[i]).style.display = "none"
-  //   }
-  // }
 }
 
 function shadeRegion(region) {
