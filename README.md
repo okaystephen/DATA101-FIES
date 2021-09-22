@@ -1,9 +1,5 @@
 # Family Income and Expenditure Survey Data Visualization
 
-Data plays a big role in providing poverty indicators and estimates in a country. The Family Income and Expenditure Survey (FIES) is one of the data sources used to estimate poverty in the Philippines which the Philippine Statistics Authority (PSA) conducts every 3 years. Its goal is to understand the current state of household income and expenditures to offer a foundation when it comes to developing or improving social and economic policies. Specifically, the FIES statistics show how much and what sorts of products and services families tend to spend their money on, as well as their sources of income. It also explores different household characteristics such as yearly income level, number of family members, age and occupation of household head, and household expenditure patterns. 
-
-#
-
 ### Setup for Mac (Local):
 - In Terminal/Command Prompt, set directory to the folder of this repository.
 - Set up the virtual environment:
