@@ -3,9 +3,8 @@
 ### Setup for Mac (Local):
 - In Terminal/Command Prompt, set directory to the folder of this repository.
 - Set up the virtual environment:
-  - Enter `python3 -m venv venv`
   - Enter `venv/bin/activate`
-  - Enter `pip install Flask pandas`
+- Enter `pip install Flask pandas`
 - To start the web application, enter `python app.py`
 - Go to a browser, and enter `127.0.0.1:5000/`
 
