@@ -53,7 +53,13 @@ $(document).ready(function () {
               ]
             },
             'fill-outline-color': 'black',
-            'fill-opacity': 0.9
+            // 'fill-opacity': 0.9
+            'fill-opacity': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              1,
+              0.5
+            ]
           }
         });
 
@@ -397,6 +403,36 @@ function animateMap(region, value, type) {
 
   map.setLayoutProperty(type, 'visibility', 'visible');
 
+  let hoveredStateId = null;
+  map.on('mousemove', type, (e) => {
+    map.getCanvas().style.cursor = 'pointer';
+    if (e.features.length > 0) {
+      if (hoveredStateId !== null) {
+        map.setFeatureState(
+          { source: 'regions', id: hoveredStateId },
+          { hover: false }
+        );
+      }
+      hoveredStateId = e.features[0].id;
+      map.setFeatureState(
+        { source: 'regions', id: hoveredStateId },
+        { hover: true }
+      );
+    }
+  });
+
+  // When the mouse leaves the state-fill layer, update the feature state of the
+  // previously hovered feature.
+  map.on('mouseleave', type, () => {
+    if (hoveredStateId !== null) {
+      map.setFeatureState(
+        { source: 'regions', id: hoveredStateId },
+        { hover: false }
+      );
+    }
+    hoveredStateId = null;
+  });
+
   // Animate the map
   if (region == "ARMM") {
     el.setAttribute("id", toggableID[0]);
@@ -704,7 +740,7 @@ function animateMap(region, value, type) {
     });
   }
 
-  markers.getElement().addEventListener('mouseenter', () => {
+  markers.getElement().addEventListener('mouseover', () => {
     map.getCanvas().style.cursor = 'pointer';
     markers.setPopup(popup);
   })
